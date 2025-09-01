@@ -1,5 +1,3 @@
-# Re-run after reset: generate the updated index.html again
-
 html_content = """<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -123,9 +121,3 @@ html_content = """<!DOCTYPE html>
   </footer>
 </body>
 </html>"""
-
-file_path = "/mnt/data/index.html"
-with open(file_path, "w") as f:
-    f.write(html_content)
-
-file_path
