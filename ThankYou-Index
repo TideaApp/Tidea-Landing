@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thank You - TIDEA</title>
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #f9f6f2;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #a0522d;
+    }
+    p {
+      font-size: 1.1rem;
+      max-width: 400px;
+    }
+    a {
+      margin-top: 1.5rem;
+      display: inline-block;
+      padding: 0.6rem 1.2rem;
+      background-color: #a0522d;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 500;
+      transition: background 0.3s ease;
+    }
+    a:hover {
+      background-color: #7a3e22;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎉 Thank You!</h1>
+  <p>You’ve been added to the TIDEA waitlist. We’ll keep you updated as we get closer to launch 🚀</p>
+  <a href="/">← Back to Home</a>
+</body>
+</html>
