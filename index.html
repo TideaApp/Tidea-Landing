@@ -1,121 +1,111 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tidea – Organisation Made Easy</title>
+  <meta charset="utf-8" />
+  <title>Tidea — Organising Made Easy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f9f6f2; /* app background */
-      color: #333;
+      background: #FAF9F7;
+      color: #2B2B2B;
+      line-height: 1.5;
+    }
+    header {
       text-align: center;
-      padding: 40px 20px;
+      padding: 60px 20px 30px;
     }
-
-    .logo {
-      max-width: 280px;
-      height: auto;
+    /* ✅ Updated logo styling */
+    header img.logo {
+      max-width: 240px;   /* scales logo to fit nicely */
+      height: auto;       /* keeps proportions */
+      margin-bottom: 20px;
       display: block;
-      margin: 0 auto 30px auto;
+      margin-left: auto;
+      margin-right: auto;
     }
-
     h1 {
-      font-size: 2.2rem;
-      margin-bottom: 10px;
-      color: #222;
+      font-size: 2.4rem;
+      margin: 0 0 10px;
     }
-
-    p {
+    p.lead {
       font-size: 1.2rem;
-      margin-bottom: 30px;
-      color: #555;
+      color: #6B6B6B;
+      margin: 0 0 30px;
     }
-
-    form {
+    .form {
+      max-width: 400px;
+      margin: 0 auto;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 20px;
+      gap: 10px;
     }
-
-    input[type="email"] {
-      padding: 12px;
+    .input {
+      padding: 14px 16px;
+      border-radius: 8px;
+      border: 1px solid #CCC;
       font-size: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      width: 100%;
-      max-width: 300px;
+      flex: 1;
     }
-
-    button {
-      padding: 12px 20px;
+    .btn {
+      background: #C15B36;
+      color: #fff;
+      font-weight: 600;
       font-size: 1rem;
-      background-color: #e27d5f; /* accent */
-      color: white;
       border: none;
-      border-radius: 6px;
+      border-radius: 8px;
+      padding: 14px 16px;
       cursor: pointer;
-      font-weight: bold;
-      transition: background-color 0.2s ease;
+      transition: background 0.2s;
     }
-
-    button:hover {
-      background-color: #d1674c;
+    .btn:hover {
+      background: #a24b2d;
     }
-
+    section {
+      padding: 60px 20px;
+      text-align: center;
+    }
     .features {
-      margin-top: 50px;
-      padding: 40px 20px;
-      background-color: #fff;
+      display: grid;
+      gap: 30px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .feature {
+      background: #fff;
+      padding: 30px;
       border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
     }
-
-    .features h2 {
-      font-size: 1.8rem;
-      margin-bottom: 20px;
-      color: #222;
-    }
-
-    .features ul {
-      list-style: none;
-      padding: 0;
-      margin: 0 auto 30px auto;
-      max-width: 500px;
-      text-align: left;
-    }
-
-    .features ul li {
-      font-size: 1.1rem;
-      padding: 10px 0;
-      border-bottom: 1px solid #eee;
-    }
-
     footer {
-      margin-top: 40px;
+      padding: 40px 20px;
+      text-align: center;
       font-size: 0.9rem;
-      color: #888;
+      color: #6B6B6B;
     }
+    .hidden { display: none; }
   </style>
 </head>
 <body>
-  <!-- ✅ Logo -->
-  <img src="logo.png" alt="Tidea logo" class="logo" />
 
-  <h1>Organisation Made Easy</h1>
-  <p>Be the first to know when we launch. Join the waitlist below.</p>
+  <header>
+    <!-- ✅ Logo updated -->
+    <img src="logo.png" alt="Tidea logo" class="logo" />
 
-  <!-- Primary waitlist form -->
-  <form name="waitlist" method="POST" data-netlify="true" action="/thank-you.html">
-    <input type="email" name="email" placeholder="Enter your email" required />
-    <button type="submit">Join the Waitlist</button>
-  </form>
+    <h1>Organising Made Easy</h1>
+    <p class="lead">Discover smarter ways to store, organise and transform your spaces.</p>
 
-  <!-- Features section -->
- <section>
+    <!-- Waitlist Form -->
+    <form id="join" name="waitlist" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="form" action="/thank-you.html">
+      <input type="hidden" name="form-name" value="waitlist" />
+      <p class="hidden"><label>Don’t fill this out: <input name="bot-field" /></label></p>
+      <input type="email" name="email" class="input" placeholder="your@email.com" required />
+      <button class="btn">Join the waitlist</button>
+    </form>
+  </header>
+
+  <section>
     <div class="features">
       <div class="feature">
         <h2>✨ Smarter Solutions</h2>
