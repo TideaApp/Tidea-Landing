@@ -115,29 +115,43 @@
   </form>
 
   <!-- Features section -->
-  <section class="features">
-    <h2>Why Tidea?</h2>
-    <ul>
-      <li>✨ Discover smart organisational solutions tailored to your space</li>
-      <li>📦 Find products that actually fit before you buy</li>
-      <li>📝 Save your favourite ideas and revisit anytime</li>
-      <li>🌍 Explore inspiration and guides for every room</li>
-    </ul>
+ <section>
+    <div class="features">
+      <div class="feature">
+        <h2>✨ Smarter Solutions</h2>
+        <p>Find the best organisational products tailored to your spaces.</p>
+      </div>
+      <div class="feature">
+        <h2>🛒 Ready to Shop</h2>
+        <p>Browse curated ideas and save products for future reference.</p>
+      </div>
+      <div class="feature">
+        <h2>📱 All in One Place</h2>
+        <p>Your inspiration, ideas and saved products — all together.</p>
+      </div>
+    </div>
+  </section>
 
-    <!-- Secondary waitlist form -->
-    <form name="waitlist-secondary" method="POST" data-netlify="true" action="/thank-you.html">
-      <input type="email" name="email" placeholder="Enter your email" required />
-      <button type="submit">Join the Waitlist</button>
+  <section>
+    <h2>Be the first to know</h2>
+    <p>Sign up today and join the waitlist for early access.</p>
+
+    <!-- Secondary Waitlist Form -->
+    <form name="waitlist-secondary" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="form" action="/thank-you.html">
+      <input type="hidden" name="form-name" value="waitlist-secondary" />
+      <p class="hidden"><label>Don’t fill this out: <input name="bot-field" /></label></p>
+      <input type="email" name="email" class="input" placeholder="your@email.com" required />
+      <button class="btn">Join the waitlist</button>
     </form>
   </section>
 
   <footer>
-    &copy; <span id="year"></span> Tidea. All rights reserved.
+    <p>© <span id="year"></span> Tidea. All rights reserved.</p>
   </footer>
 
   <script>
-    // Auto-update footer year
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
+
 </body>
 </html>
