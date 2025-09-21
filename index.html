@@ -8,17 +8,17 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background-color: #f9f6f2; /* matches app background */
+      background-color: #f9f6f2; /* app background */
       color: #333;
       text-align: center;
       padding: 40px 20px;
     }
 
     .logo {
-      max-width: 280px;  /* control how large the logo appears */
+      max-width: 280px;
       height: auto;
       display: block;
-      margin: 0 auto 30px auto; /* centers and adds bottom spacing */
+      margin: 0 auto 30px auto;
     }
 
     h1 {
@@ -38,6 +38,7 @@
       flex-direction: column;
       align-items: center;
       gap: 12px;
+      margin-bottom: 20px;
     }
 
     input[type="email"] {
@@ -52,7 +53,7 @@
     button {
       padding: 12px 20px;
       font-size: 1rem;
-      background-color: #e27d5f; /* accent color */
+      background-color: #e27d5f; /* accent */
       color: white;
       border: none;
       border-radius: 6px;
@@ -64,18 +65,79 @@
     button:hover {
       background-color: #d1674c;
     }
+
+    .features {
+      margin-top: 50px;
+      padding: 40px 20px;
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .features h2 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      color: #222;
+    }
+
+    .features ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 auto 30px auto;
+      max-width: 500px;
+      text-align: left;
+    }
+
+    .features ul li {
+      font-size: 1.1rem;
+      padding: 10px 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 0.9rem;
+      color: #888;
+    }
   </style>
 </head>
 <body>
-  <!-- ✅ Logo at the top -->
+  <!-- ✅ Logo -->
   <img src="logo.png" alt="Tidea logo" class="logo" />
 
   <h1>Organisation Made Easy</h1>
   <p>Be the first to know when we launch. Join the waitlist below.</p>
 
+  <!-- Primary waitlist form -->
   <form name="waitlist" method="POST" data-netlify="true" action="/thank-you.html">
     <input type="email" name="email" placeholder="Enter your email" required />
     <button type="submit">Join the Waitlist</button>
   </form>
+
+  <!-- Features section -->
+  <section class="features">
+    <h2>Why Tidea?</h2>
+    <ul>
+      <li>✨ Discover smart organisational solutions tailored to your space</li>
+      <li>📦 Find products that actually fit before you buy</li>
+      <li>📝 Save your favourite ideas and revisit anytime</li>
+      <li>🌍 Explore inspiration and guides for every room</li>
+    </ul>
+
+    <!-- Secondary waitlist form -->
+    <form name="waitlist-secondary" method="POST" data-netlify="true" action="/thank-you.html">
+      <input type="email" name="email" placeholder="Enter your email" required />
+      <button type="submit">Join the Waitlist</button>
+    </form>
+  </section>
+
+  <footer>
+    &copy; <span id="year"></span> Tidea. All rights reserved.
+  </footer>
+
+  <script>
+    // Auto-update footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
