@@ -2,215 +2,139 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Tidea — Organising made easy</title>
+  <title>Tidea — Organising Made Easy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <!-- Brand colors (tweak here if you adjust the app theme) -->
   <style>
-    :root{
-      --bg:#F5EFEA;          /* soft sand (matches #EFEAE6/#E7E0DA vibe) */
-      --card:#FFFFFF;
-      --ink:#2B261F;         /* main text */
-      --muted:#8E857E;       /* secondary text */
-      --border:#E7E0DA;
-      --chip:#EFEAE6;
-      --accent:#C36A44;      /* warm “rust” button */
-      --accent-ink:#FFFFFF;
-      --accent-ghost:#FFF3EC;
-      --success:#0F9D58;
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      margin: 0;
+      background: #FAF9F7;
+      color: #2B2B2B;
+      line-height: 1.5;
     }
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif}
-    a{color:var(--accent);text-decoration:none}
-    .wrap{max-width:1040px;margin:0 auto;padding:24px}
-    header{display:flex;align-items:center;justify-content:space-between;gap:16px}
-    .brand{display:flex;align-items:center;gap:12px}
-    .brand img{height:34px;width:auto}
-    .brand-title{font-weight:800;letter-spacing:.3px}
-    .cta-bar{display:flex;gap:10px;flex-wrap:wrap}
-    .btn{display:inline-flex;align-items:center;gap:8px;border-radius:10px;padding:12px 16px;font-weight:700;border:1px solid transparent;cursor:pointer}
-    .btn-primary{background:var(--accent);color:var(--accent-ink)}
-    .btn-outline{border-color:var(--accent);color:var(--accent)}
-    .btn-ghost{background:var(--accent-ghost);color:var(--accent)}
-    .hero{display:grid;grid-template-columns:1.15fr .85fr;gap:28px;align-items:center;margin:28px 0}
-    .hero-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px;box-shadow:0 8px 24px rgba(0,0,0,.05)}
-    h1{font-size:42px;line-height:1.1;margin:10px 0 12px}
-    .sub{color:var(--muted);font-size:18px}
-    .hero-media{border-radius:14px;overflow:hidden;border:1px solid var(--border);background:#fff;height:360px;display:flex;align-items:center;justify-content:center}
-    .hero-media img{width:100%;height:100%;object-fit:cover}
-    .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
-    .chip{background:var(--chip);border:1px solid var(--border);padding:6px 10px;border-radius:999px;font-weight:600;color:var(--ink)}
-    .sections{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:10px 0 30px}
-    .card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px;box-shadow:0 8px 18px rgba(0,0,0,.04)}
-    .card h3{margin:0 0 6px}
-    .tiny{color:var(--muted)}
-    .how{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:8px 0 34px}
-    .step-num{background:var(--chip);border:1px solid var(--border);padding:4px 10px;border-radius:999px;font-weight:800;display:inline-block;margin-bottom:8px}
-    .waitlist{display:grid;grid-template-columns:1.1fr .9fr;gap:20px;align-items:center}
-    form{display:flex;gap:10px;flex-wrap:wrap}
-    input[type="email"],input[type="text"]{
-      background:#fff;border:1px solid var(--border);border-radius:10px;padding:12px 14px;min-width:260px;color:var(--ink)
+    header {
+      text-align: center;
+      padding: 60px 20px 30px;
     }
-    .success{
-      display:none;margin-top:10px;color:#0B5; font-weight:700;
+    header img {
+      width: 70px;
+      margin-bottom: 20px;
     }
-    footer{margin-top:34px;padding:24px;border-top:1px solid var(--border);display:grid;gap:12px}
-    .foot-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-    @media (max-width:980px){
-      .hero,.waitlist{grid-template-columns:1fr}
-      .sections,.how{grid-template-columns:1fr}
+    h1 {
+      font-size: 2.4rem;
+      margin: 0 0 10px;
     }
+    p.lead {
+      font-size: 1.2rem;
+      color: #6B6B6B;
+      margin: 0 0 30px;
+    }
+    .form {
+      max-width: 400px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .input {
+      padding: 14px 16px;
+      border-radius: 8px;
+      border: 1px solid #CCC;
+      font-size: 1rem;
+      flex: 1;
+    }
+    .btn {
+      background: #C15B36;
+      color: #fff;
+      font-weight: 600;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      padding: 14px 16px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn:hover {
+      background: #a24b2d;
+    }
+    section {
+      padding: 60px 20px;
+      text-align: center;
+    }
+    .features {
+      display: grid;
+      gap: 30px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .feature {
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    footer {
+      padding: 40px 20px;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #6B6B6B;
+    }
+    .hidden { display: none; }
   </style>
-
-  <!-- Basic meta -->
-  <meta name="description" content="Tidea helps you organise everyday spaces with smart product suggestions that actually fit. Organising made easy." />
-  <link rel="icon" href="/favicon.ico" />
-  <!-- Open Graph (social) -->
-  <meta property="og:title" content="Tidea — Organising made easy" />
-  <meta property="og:description" content="Organise drawers, cupboards and more with products that fit your space." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://tidea.app/" />
-  <meta property="og:image" content="https://tidea.app/og-image.jpg" />
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <div class="brand">
-        <!-- Replace with your logo path -->
-        <img src="images/logo.svg" alt="Tidea logo" />
-        <div class="brand-title">Tidea</div>
-      </div>
-      <nav class="cta-bar">
-        <a class="btn btn-ghost" href="#how">How it works</a>
-        <a class="btn btn-outline" href="#waitlist">Join the waitlist</a>
-      </nav>
-    </header>
 
-    <!-- Hero -->
-    <section class="hero">
-      <div class="hero-card">
-        <h1>Organising made easy</h1>
-        <p class="sub">Tidea proposes smart, shoppable solutions that actually fit your space.</p>
-        <div class="chips" aria-hidden="true">
-          <span class="chip">Drawers</span>
-          <span class="chip">Cupboards</span>
-          <span class="chip">Wardrobes</span>
-          <span class="chip">Fridges</span>
-          <span class="chip">Shelves</span>
-        </div>
+  <header>
+    <img src="/logo.svg" alt="Tidea logo" />
+    <h1>Organising Made Easy</h1>
+    <p class="lead">Discover smarter ways to store, organise and transform your spaces.</p>
 
-        <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap">
-          <a class="btn btn-primary" href="#waitlist">Join the waitlist</a>
-          <a class="btn btn-outline" href="#features">See what’s coming</a>
-        </div>
-      </div>
+    <!-- Waitlist Form -->
+    <form id="join" name="waitlist" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="form" action="/thank-you.html">
+      <input type="hidden" name="form-name" value="waitlist" />
+      <p class="hidden"><label>Don’t fill this out: <input name="bot-field" /></label></p>
+      <input type="email" name="email" class="input" placeholder="your@email.com" required />
+      <button class="btn">Join the waitlist</button>
+    </form>
+  </header>
 
-      <!-- Placeholder hero image: replace with lifestyle image that matches app vibe -->
-      <div class="hero-media">
-        <img src="https://images.unsplash.com/photo-1616594039964-ae9021f5f5a4?q=80&w=1600&auto=format&fit=crop" alt="Beautifully organised shelves (placeholder)" />
+  <section>
+    <div class="features">
+      <div class="feature">
+        <h2>✨ Smarter Solutions</h2>
+        <p>Find the best organisational products tailored to your spaces.</p>
       </div>
-    </section>
+      <div class="feature">
+        <h2>🛒 Ready to Shop</h2>
+        <p>Browse curated ideas and save products for future reference.</p>
+      </div>
+      <div class="feature">
+        <h2>📱 All in One Place</h2>
+        <p>Your inspiration, ideas and saved products — all together.</p>
+      </div>
+    </div>
+  </section>
 
-    <!-- Value props -->
-    <section id="features" class="sections">
-      <div class="card">
-        <h3>Effortless</h3>
-        <p class="tiny">Minimal setup, clean UI, and stress-free flows.</p>
-        <p class="tiny"><em>Image idea:</em> simple phone mock with your app home.</p>
-      </div>
-      <div class="card">
-        <h3>Inspired</h3>
-        <p class="tiny">Ideas and guides to help you get started quickly.</p>
-        <p class="tiny"><em>Image idea:</em> moodboard or inspiration grid.</p>
-      </div>
-      <div class="card">
-        <h3>Shop-ready</h3>
-        <p class="tiny">Real products from trusted retailers—no guesswork.</p>
-        <p class="tiny"><em>Image idea:</em> tasteful brand logos row.</p>
-      </div>
-    </section>
+  <section>
+    <h2>Be the first to know</h2>
+    <p>Sign up today and join the waitlist for early access.</p>
 
-    <!-- How it works -->
-    <section id="how" class="how">
-      <div class="card">
-        <div class="step-num">Step 1</div>
-        <h3>Describe</h3>
-        <p class="tiny">Pick your space and (optionally) what you’re storing.</p>
-        <p class="tiny"><em>Image idea:</em> screenshot of your Describe screen.</p>
-      </div>
-      <div class="card">
-        <div class="step-num">Step 2</div>
-        <h3>See ideas</h3>
-        <p class="tiny">Thoughtful layouts to make the most of your space.</p>
-        <p class="tiny"><em>Image idea:</em> your Ideas tab mock.</p>
-      </div>
-      <div class="card">
-        <div class="step-num">Step 3</div>
-        <h3>Shop solutions</h3>
-        <p class="tiny">Buy or save products that match your needs.</p>
-        <p class="tiny"><em>Image idea:</em> result cards with buttons.</p>
-      </div>
-    </section>
+    <!-- Secondary Waitlist Form -->
+    <form name="waitlist-secondary" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="form" action="/thank-you.html">
+      <input type="hidden" name="form-name" value="waitlist-secondary" />
+      <p class="hidden"><label>Don’t fill this out: <input name="bot-field" /></label></p>
+      <input type="email" name="email" class="input" placeholder="your@email.com" required />
+      <button class="btn">Join the waitlist</button>
+    </form>
+  </section>
 
-    <!-- Waitlist -->
-    <section id="waitlist" class="waitlist">
-      <div class="hero-card">
-        <h2 style="margin:0 0 6px">Join the waitlist</h2>
-        <p class="sub">Be first to try Tidea and help shape what we build.</p>
+  <footer>
+    <p>© <span id="year"></span> Tidea. All rights reserved.</p>
+  </footer>
 
-        <!-- Netlify Forms: works on any Netlify site out of the box -->
-        <form name="waitlist" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-          <input type="hidden" name="form-name" value="waitlist" />
-          <p style="display:none">
-            <label>Don’t fill this out: <input name="bot-field" /></label>
-          </p>
-          <input type="text" name="name" placeholder="Your name (optional)" autocomplete="name" />
-          <input type="email" name="email" placeholder="Email address" required autocomplete="email" />
-          <button class="btn btn-primary" type="submit">Join</button>
-        </form>
-        <div class="success" id="successMsg">Thanks! You’re on the list 💌</div>
-
-        <p class="tiny" style="margin-top:10px">We’ll only email about launches and major updates. You can unsubscribe any time.</p>
-      </div>
-
-      <div class="hero-media" aria-hidden="true">
-        <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&w=1600&auto=format&fit=crop" alt="" />
-      </div>
-    </section>
-
-    <footer>
-      <div class="foot-grid">
-        <div class="tiny">
-          © <span id="y"></span> Tidea · All rights reserved.
-          <br/>Made with care in the UK.
-        </div>
-        <div class="tiny" style="text-align:right">
-          <a href="mailto:hello@tidea.app">hello@tidea.app</a> ·
-          <a href="#" onclick="alert('Privacy Policy coming soon');return false;">Privacy</a> ·
-          <a href="#" onclick="alert('Terms coming soon');return false;">Terms</a>
-        </div>
-      </div>
-    </footer>
-  </div>
-
-  <!-- tiny enhancement: show success message after Netlify redirect-less submission -->
   <script>
-    // Optional: show inline success if ?success=1 is present (or swap to a thank-you page)
-    const url = new URL(window.location.href);
-    if (url.searchParams.get('success') === '1') {
-      document.getElementById('successMsg').style.display = 'block';
-      window.history.replaceState({}, '', url.pathname);
-    }
-    // Turn the form into AJAX to stay on-page and show success
-    const form = document.querySelector('form[name="waitlist"]');
-    form?.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const data = new FormData(form);
-      const resp = await fetch('/', { method: 'POST', body: data });
-      document.getElementById('successMsg').style.display = 'block';
-      form.reset();
-    });
-    document.getElementById('y').textContent = new Date().getFullYear();
+    document.getElementById("year").textContent = new Date().getFullYear();
   </script>
+
 </body>
 </html>
