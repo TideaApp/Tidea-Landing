@@ -120,5 +120,62 @@
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
+
+<!-- Cookie Notice (Tidea) -->
+<style>
+  .cookie-banner {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 9999;
+    background: #2B2B2B; color: #FFFFFF; padding: 14px 16px;
+    display: none; /* shown by JS if no consent */
+    box-shadow: 0 -6px 16px rgba(0,0,0,0.18);
+  }
+  .cookie-wrap {
+    max-width: 980px; margin: 0 auto; display: flex; gap: 12px; align-items: center;
+    flex-wrap: wrap; justify-content: space-between;
+  }
+  .cookie-text { flex: 1 1 560px; font-size: 0.95rem; line-height: 1.45; color: #F3F3F3; }
+  .cookie-text a { color: #FFD9C9; text-decoration: underline; }
+  .cookie-actions { display: flex; gap: 8px; }
+  .cookie-btn {
+    border: none; border-radius: 10px; padding: 10px 14px; font-weight: 700; cursor: pointer;
+  }
+  .cookie-accept { background: #C15B36; color: #fff; }
+  .cookie-accept:hover { background: #a24b2d; }
+  .cookie-manage { background: transparent; color: #FFFFFF; border: 1px solid #FFFFFF; }
+  .cookie-manage:hover { background: rgba(255,255,255,0.08); }
+</style>
+
+<div class="cookie-banner" id="cookieBanner" role="region" aria-label="Cookie notice">
+  <div class="cookie-wrap">
+    <div class="cookie-text">
+      We use cookies and similar technologies to improve your experience and to measure performance.
+      See our <a href="/privacy.html">Privacy Policy</a> for details.
+    </div>
+    <div class="cookie-actions">
+      <button class="cookie-btn cookie-manage" id="cookieManageBtn" type="button">Manage</button>
+      <button class="cookie-btn cookie-accept" id="cookieAcceptBtn" type="button">Got it</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function () {
+    const KEY = 'tidea_cookie_consent_v1';
+    const banner = document.getElementById('cookieBanner');
+    if (!localStorage.getItem(KEY)) banner.style.display = 'block';
+
+    document.getElementById('cookieAcceptBtn')?.addEventListener('click', () => {
+      localStorage.setItem(KEY, JSON.stringify({ accepted: true, ts: Date.now() }));
+      banner.style.display = 'none';
+    });
+
+    document.getElementById('cookieManageBtn')?.addEventListener('click', () => {
+      // Simple “manage”: take users to Privacy Policy (you can replace with a real preferences modal later)
+      window.location.href = '/privacy.html#cookies';
+    });
+  })();
+</script>
+<!-- /Cookie Notice -->
+  
 </body>
 </html>
