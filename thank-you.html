@@ -1,49 +1,31 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Thank You — TIDEA</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="icon" type="image/png" href="/favicon.png" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/favicon.png">
+
+  <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      margin: 0;
-      background: #FAF9F7;
-      color: #2B2B2B;
-      line-height: 1.6;
-      text-align: center;
-      padding: 60px 20px;
-    }
-    h1 {
-      font-size: 2.2rem;
-      margin-bottom: 10px;
-    }
-    p {
-      font-size: 1.2rem;
-      color: #6B6B6B;
-      margin-bottom: 20px;
-    }
-    .btn {
-      background: #B85C38;
-      color: #fff;
-      border: none;
-      border-radius: 10px;
-      padding: 12px 20px;
-      font-weight: 700;
-      cursor: pointer;
-      display: inline-block;
-      text-decoration: none;
-      margin-top: 20px;
-    }
-    .btn:hover {
-      background: #9b4a2d;
-    }
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    body { font-family: 'Inter', sans-serif; background-color: #F7F3EF; }
   </style>
 </head>
-<body>
-  <h1>🎉 Thank You!</h1>
-  <p>You’ve successfully joined the TIDEA waitlist. We’ll be in touch soon.</p>
-  <a href="/index.html" class="btn">← Back to Home</a>
+<body class="bg-white text-gray-800 antialiased flex items-center justify-center min-h-screen">
+
+  <main class="text-center px-6">
+    <img src="/logo.png" alt="TIDEA Logo" class="h-16 mx-auto mb-6">
+    <h1 class="text-3xl md:text-4xl font-bold mb-4 text-primary">Thank You for Joining!</h1>
+    <p class="text-lg text-gray-600 mb-8">You’ve been added to the TIDEA waitlist. We’ll be in touch with updates soon.</p>
+    <a href="/index.html" class="bg-primary text-white px-6 py-3 rounded-lg hover:bg-[#9b4a2d] transition-colors font-medium">← Back to Home</a>
+  </main>
+
 </body>
 </html>
+
+
+
+
