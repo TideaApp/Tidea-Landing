@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Privacy Policy — Tidea</title>
+  <title>Privacy Policy — TIDEA</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="icon" type="image/png" href="/favicon.png" />
   <style>
@@ -12,8 +12,8 @@
       --muted: #6B6B6B;
       --card: #FFFFFF;
       --border: #E9E4DF;
-      --accent: #C15B36;
-      --accent-hover: #a24b2d;
+      --accent: #B85C38;
+      --accent-hover: #9b4a2d;
     }
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -35,10 +35,6 @@
       font-size: 2.2rem;
       margin-bottom: 6px;
     }
-    p.lead {
-      color: var(--muted);
-      margin: 0 0 24px;
-    }
     main {
       background: var(--card);
       border: 1px solid var(--border);
@@ -52,12 +48,6 @@
     a {
       color: var(--accent);
       text-decoration: underline;
-    }
-    footer {
-      text-align: center;
-      margin-top: 28px;
-      color: var(--muted);
-      font-size: 0.9rem;
     }
     .btnRow {
       margin: 16px 0 24px;
@@ -78,20 +68,25 @@
     .btn:hover {
       background: var(--accent-hover);
     }
+    footer {
+      text-align: center;
+      margin-top: 28px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
   </style>
 </head>
 <body>
   <div class="wrap">
     <header>
       <h1>Privacy Policy</h1>
-      <p class="lead">Effective Date: September 2025</p>
       <div class="btnRow">
         <a class="btn" href="/index.html">← Back to Home</a>
       </div>
     </header>
 
     <main>
-      <p>At <strong>Tidea</strong>, we respect your privacy. This policy outlines how we collect, use, and safeguard your information.</p>
+      <p>At <strong>TIDEA</strong>, we respect your privacy. This policy outlines how we collect, use, and safeguard your information.</p>
 
       <h2>Information We Collect</h2>
       <p>When you join our waitlist, we collect your email address. We use this information solely to keep you updated about our product and related news.</p>
@@ -113,69 +108,12 @@
     </main>
 
     <footer>
-      <p>© <span id="year"></span> Tidea • <a href="/terms.html">Terms of Service</a></p>
+      <p>© <span id="year"></span> TIDEA • <a href="/terms.html">Terms of Service</a></p>
     </footer>
   </div>
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
-
-<!-- Cookie Notice (Tidea) -->
-<style>
-  .cookie-banner {
-    position: fixed; left: 0; right: 0; bottom: 0; z-index: 9999;
-    background: #2B2B2B; color: #FFFFFF; padding: 14px 16px;
-    display: none; /* shown by JS if no consent */
-    box-shadow: 0 -6px 16px rgba(0,0,0,0.18);
-  }
-  .cookie-wrap {
-    max-width: 980px; margin: 0 auto; display: flex; gap: 12px; align-items: center;
-    flex-wrap: wrap; justify-content: space-between;
-  }
-  .cookie-text { flex: 1 1 560px; font-size: 0.95rem; line-height: 1.45; color: #F3F3F3; }
-  .cookie-text a { color: #FFD9C9; text-decoration: underline; }
-  .cookie-actions { display: flex; gap: 8px; }
-  .cookie-btn {
-    border: none; border-radius: 10px; padding: 10px 14px; font-weight: 700; cursor: pointer;
-  }
-  .cookie-accept { background: #C15B36; color: #fff; }
-  .cookie-accept:hover { background: #a24b2d; }
-  .cookie-manage { background: transparent; color: #FFFFFF; border: 1px solid #FFFFFF; }
-  .cookie-manage:hover { background: rgba(255,255,255,0.08); }
-</style>
-
-<div class="cookie-banner" id="cookieBanner" role="region" aria-label="Cookie notice">
-  <div class="cookie-wrap">
-    <div class="cookie-text">
-      We use cookies and similar technologies to improve your experience and to measure performance.
-      See our <a href="/privacy.html">Privacy Policy</a> for details.
-    </div>
-    <div class="cookie-actions">
-      <button class="cookie-btn cookie-manage" id="cookieManageBtn" type="button">Manage</button>
-      <button class="cookie-btn cookie-accept" id="cookieAcceptBtn" type="button">Got it</button>
-    </div>
-  </div>
-</div>
-
-<script>
-  (function () {
-    const KEY = 'tidea_cookie_consent_v1';
-    const banner = document.getElementById('cookieBanner');
-    if (!localStorage.getItem(KEY)) banner.style.display = 'block';
-
-    document.getElementById('cookieAcceptBtn')?.addEventListener('click', () => {
-      localStorage.setItem(KEY, JSON.stringify({ accepted: true, ts: Date.now() }));
-      banner.style.display = 'none';
-    });
-
-    document.getElementById('cookieManageBtn')?.addEventListener('click', () => {
-      // Simple “manage”: take users to Privacy Policy (you can replace with a real preferences modal later)
-      window.location.href = '/privacy.html#cookies';
-    });
-  })();
-</script>
-<!-- /Cookie Notice -->
-  
 </body>
 </html>
