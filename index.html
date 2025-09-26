@@ -35,6 +35,9 @@
 </head>
 <body class="bg-white text-gray-800 antialiased">
 
+  <!-- 🔔 Toasts container -->
+  <div id="toast-host" class="fixed top-4 right-4 z-[70] space-y-2"></div>
+
   <!-- Navigation -->
   <nav class="fixed w-full bg-white/90 backdrop-blur-md z-50 border-b border-gray-100">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -260,37 +263,57 @@
   <script src="https://unpkg.com/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 
   <script>
-    // Replace Feather Icons
+    // Icons + year
     feather.replace();
-
-    // Dynamic year
     document.getElementById('year').textContent = new Date().getFullYear();
 
     // Cookie banner logic
     (function () {
       var KEY = 'tidea_cookie_consent_v1';
       var banner = document.getElementById('cookie-banner');
-      var accepted = localStorage.getItem(KEY);
-
-      if (!accepted) {
-        banner.classList.remove('hidden');
-      }
-
-      document.getElementById('cookie-accept').addEventListener('click', function () {
-        localStorage.setItem(KEY, 'accepted');
-        banner.classList.add('hidden');
-      });
-
-      document.getElementById('cookie-decline').addEventListener('click', function () {
-        localStorage.setItem(KEY, 'declined');
-        banner.classList.add('hidden');
-      });
+      if (!localStorage.getItem(KEY)) banner.classList.remove('hidden');
+      document.getElementById('cookie-accept').onclick = () => { localStorage.setItem(KEY, 'accepted'); banner.classList.add('hidden'); };
+      document.getElementById('cookie-decline').onclick = () => { localStorage.setItem(KEY, 'declined'); banner.classList.add('hidden'); };
     })();
 
-    // ✅ Supabase waitlist integration
-    const SUPABASE_URL = 'https://hciergtglghsfezgkkni.supabase.co';            // ← replace
-    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhjaWVyZ3RnbGdoc2Zlemdra25pIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTY4NDMzOTQsImV4cCI6MjA3MjQxOTM5NH0.xyC-7gDbRh0OfZRxtTNOfVEHw0Kh0JBfDCqYcIC1POs';                        // ← replace
+    // 🔔 Toast helper
+    function showToast(message, type = 'info') {
+      const host = document.getElementById('toast-host');
+      const base = 'rounded-lg px-4 py-3 shadow-lg border flex items-start gap-3';
+      const styles = {
+        success: 'bg-white border-green-200 text-green-800',
+        error:   'bg-white border-red-200 text-red-800',
+        info:    'bg-white border-gray-200 text-gray-800',
+        warn:    'bg-white border-yellow-200 text-yellow-800'
+      };
+      const icon = {
+        success: 'check-circle',
+        error: 'alert-triangle',
+        info: 'info',
+        warn: 'alert-circle'
+      }[type] || 'info';
 
+      const el = document.createElement('div');
+      el.className = base + ' ' + (styles[type] || styles.info);
+      el.innerHTML = `
+        <span class="mt-0.5"><i data-feather="${icon}"></i></span>
+        <div class="text-sm leading-snug">${message}</div>
+        <button class="ml-3 text-xs opacity-70 hover:opacity-100">Dismiss</button>
+      `;
+      host.appendChild(el);
+      feather.replace({ 'aria-hidden': 'true' });
+
+      const remove = () => {
+        el.classList.add('opacity-0', 'transition', 'duration-200');
+        setTimeout(() => el.remove(), 220);
+      };
+      el.querySelector('button')?.addEventListener('click', remove);
+      setTimeout(remove, 3500);
+    }
+
+    // ✅ Supabase waitlist integration
+    const SUPABASE_URL = 'https://hciergtglghsfezgkkni.supabase.co';        // ← replace
+    const SUPABASE_ANON_KEY = 'yJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhjaWVyZ3RnbGdoc2Zlemdra25pIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTY4NDMzOTQsImV4cCI6MjA3MjQxOTM5NH0.xyC-7gDbRh0OfZRxtTNOfVEHw0Kh0JBfDCqYcIC1POs'; // ← replace
     const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
     // Attach to all forms posting to /thank-you.html
@@ -304,14 +327,14 @@
 
         const ok = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
         if (!ok) {
-          alert('Please enter a valid email address.');
+          showToast('Please enter a valid email address.', 'warn');
           emailInput?.focus();
           return;
         }
 
         const originalLabel = btn.textContent;
         btn.disabled = true;
-        btn.textContent = 'Adding...';
+        btn.textContent = 'Adding…';
 
         const source =
           form.id === 'waitlist-form' ? 'hero' :
@@ -321,22 +344,26 @@
         try {
           const { error } = await _supabase
             .from('waitlist')
-            .insert({
-              email,
-              source,
-              ua: navigator.userAgent || ''
-            });
+            .insert({ email, source, ua: navigator.userAgent || '' });
 
           if (error) {
-            alert(error.message || 'Could not save your email. Please try again.');
+            let message = 'Could not save your email. Please try again.';
+            const emsg = (error.message || '').toLowerCase();
+            if (emsg.includes('duplicate key') || emsg.includes('unique constraint')) {
+              message = 'You’re already on the waiting list!';
+              showToast(message, 'info');
+            } else {
+              showToast(message, 'error');
+            }
             btn.disabled = false;
             btn.textContent = originalLabel;
             return;
           }
 
+          // Success
           window.location.href = '/thank-you.html';
         } catch (err) {
-          alert('Network error. Please try again.');
+          showToast('Network error. Please try again.', 'error');
           btn.disabled = false;
           btn.textContent = originalLabel;
         }
