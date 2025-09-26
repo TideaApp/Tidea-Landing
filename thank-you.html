@@ -4,42 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Thank You — TIDEA</title>
-
-  <!-- ✅ Favicon -->
   <link rel="icon" type="image/png" href="/favicon.png">
-
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
     body { font-family: 'Inter', sans-serif; background-color: #F7F3EF; }
   </style>
 </head>
-<body class="bg-white text-gray-800 antialiased flex flex-col justify-between min-h-screen">
-
-  <!-- Main Content -->
-  <main class="flex-grow flex flex-col items-center justify-center text-center px-6">
+<body class="bg-white text-gray-800 antialiased flex items-center justify-center min-h-screen">
+  <main class="text-center px-6">
     <img src="/logo.png" alt="TIDEA Logo" class="h-16 mx-auto mb-6">
-    <h1 class="text-3xl md:text-4xl font-bold mb-4 text-primary">Thank You for Joining!</h1>
+    <h1 class="text-3xl md:text-4xl font-bold mb-4 text-[#B85C38]">Thank You for Joining!</h1>
     <p class="text-lg text-gray-600 mb-8">You’ve been added to the TIDEA waitlist. We’ll be in touch with updates soon.</p>
-    
-    <!-- ✅ Clear Button -->
-    <div class="mt-4">
-      <a href="/index.html" 
-         class="inline-block bg-primary text-white px-6 py-3 rounded-lg hover:bg-[#9b4a2d] transition-colors font-medium">
-        ← Back to Home
-      </a>
-    </div>
+    <a href="/index.html" class="inline-flex items-center gap-2 bg-[#B85C38] text-white px-6 py-3 rounded-lg hover:bg-[#9b4a2d] transition-colors font-medium">
+      ← Back to Home
+    </a>
   </main>
-
-  <!-- Footer -->
-  <footer class="bg-gray-900 text-white py-6 text-center text-sm">
-    <p>© <span id="year"></span> TIDEA. Organisation, Made Magical. All rights reserved.</p>
-  </footer>
-
-  <!-- ✅ Dynamic Year -->
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
-
 </body>
 </html>
