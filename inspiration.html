@@ -160,41 +160,51 @@
   }
 
   // 4) Render cards (use `filtered`, not `rows`)
-  const cards = filtered.map((item) => {
-    const img = item.image_url ? esc(item.image_url) : null;
-    const title = esc(item.title || 'Untitled');
-    const desc = esc(item.description || '');
+const cards = filtered.map((item) => {
+  const img = item.image_url ? esc(item.image_url) : null;
+  const title = esc(item.title || 'Untitled');
+  const desc = esc(item.description || '');
 
-    const prod = item.product_id ? productMap[item.product_id] : undefined;
-    const supplier = esc(prod?.supplier_name || '');
-    const priceText = prod?.price_numeric
-      ? new Intl.NumberFormat('en-GB', { style: 'currency', currency: (prod?.currency || 'GBP').toUpperCase() }).format(prod.price_numeric)
-      : '';
-    const productUrl = prod?.product_url ? normalizeUrl(prod.product_url) : null;
+  const prod = item.product_id ? productMap[item.product_id] : undefined;
+  const supplier = esc(prod?.supplier_name || '');
+  const priceText = prod?.price_numeric
+    ? new Intl.NumberFormat('en-GB', {
+        style: 'currency',
+        currency: (prod?.currency || 'GBP').toUpperCase(),
+      }).format(prod.price_numeric)
+    : '';
+  const productUrl = prod?.product_url ? normalizeUrl(prod.product_url) : null;
 
-    return `
-      <article class="bg-white rounded-2xl shadow-lg overflow-hidden transition-all hover:shadow-xl">
-        ${img ? `<img src="${img}" alt="${title}" class="w-full h-48 object-cover" />` : ''}
-        <div class="p-6">
-          <h3 class="font-semibold text-lg mb-2">${title}</h3>
-          ${desc ? `<p class="text-gray-600 text-sm mb-3">${desc}</p>` : ''}
-          ${supplier ? `<p class="text-gray-500 text-xs mb-2">${supplier}</p>` : ''}
-          <div class="flex items-center justify-between mt-4">
-            ${
-              productUrl
-                ? `<a href="${esc(productUrl)}" target="_blank" rel="noopener noreferrer"
-                      class="text-[#B85C38] font-semibold text-sm hover:underline">
-                      View Product →
-                   </a>`
-                : ''
-            }
-            ${priceText ? `<span class="text-gray-800 text-sm font-semibold">${priceText}</span>` : ''}
-          </div>
+  return `
+    <article class="bg-white rounded-2xl shadow-lg overflow-hidden transition-all hover:shadow-xl">
+      ${
+        img
+          ? `<img src="${img}" alt="${title}" class="w-full h-48 object-cover" />`
+          : ''
+      }
+      <div class="p-6">
+        <h3 class="font-semibold text-lg mb-2">${title}</h3>
+        ${desc ? `<p class="text-gray-600 text-sm mb-3">${desc}</p>` : ''}
+        ${supplier ? `<p class="text-gray-500 text-xs mb-a2">${supplier}</p>` : ''}
+        <div class="flex items-center justify-between mt-4">
+          ${
+            productUrl
+              ? `<a href="${esc(productUrl)}" target="_blank" rel="noopener noreferrer"
+                    class="text-[#B85C38] font-semibold text-sm hover:underline">
+                    View Product →
+                 </a>`
+              : ''
+          }
+          ${
+            priceText
+              ? `<span class="text-gray-800 text-sm font-semibold">${priceText}</span>`
+              : ''
+          }
         </div>
-      </article>
-    `;
-  }).join('');
-
+      </div>
+    </article>
+  `;
+}).join('');
   // 5) Inject into the page
   grid.innerHTML = cards;
 }
