@@ -157,44 +157,39 @@
       }
 
       // 4) Render cards
-      grid.innerHTML = filtered.map(item => {
-        const img = esc(item.image_url || '');
-        const title = esc(item.title || 'Idea');
-        const desc = esc(item.description || '');
-        const prod = item.product_id ? productMap[item.product_id] : null;
-        const supplier = prod?.supplier_name ? esc(prod.supplier_name) : '';
-        const price = formatPrice(prod?.price_numeric, prod?.currency);
-        const productUrl = normalizeUrl(prod?.product_url);
+    const cards = rows.map((item) => {
+  const img = esc(item.image_url || '/placeholder.jpg');
+  const title = esc(item.title || 'Untitled');
+  const desc = esc(item.description || '');
+  const prod = item.product_id ? productMap[item.product_id] : undefined;
+  const supplier = esc(prod?.supplier_name || '');
+  const priceText = prod?.price_numeric
+    ? new Intl.NumberFormat('en-GB', { style: 'currency', currency: prod?.currency || 'GBP' }).format(prod.price_numeric)
+    : '';
+  const productUrl = prod?.product_url ? esc(prod.product_url) : null;
 
-        return `
-          <article class="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-200">
-            ${img ? `<img src="${img}" alt="${title}" class="w-full h-48 object-cover">` : ''}
-            <div class="p-6">
-              <h3 class="font-semibold text-lg mb-2">${title}</h3>
-              ${desc ? `<p class="text-gray-600 text-sm mb-3">${desc}</p>` : ''}
-
-              ${supplier || price ? `
-                <p class="text-gray-700 text-sm mb-3">
-                  ${supplier ? `<span class="font-medium">${supplier}</span>` : ''} ${price ? `• ${price}` : ''}
-                </p>` : ''}
-
-              <div class="flex items-center gap-3">
-                ${productUrl ? `
-                  <a href="${productUrl}" target="_blank" rel="noopener"
-                     class="inline-block border border-[#B85C38] text-[#B85C38] font-semibold px-3 py-2 rounded-lg hover:bg-[#B85C38] hover:text-white transition-colors text-sm">
-                    View product
-                  </a>` : ''}
-
-                <!-- Optional: local "save idea" using localStorage -->
-                <button data-id="${esc(item.id)}"
-                        class="save-idea inline-block bg-[#B85C38] text-white font-semibold px-3 py-2 rounded-lg hover:bg-[#9b4a2d] text-sm">
-                  Save idea
-                </button>
-              </div>
-            </div>
-          </article>
-        `;
-      }).join('');
+  return `
+    <article class="bg-white rounded-2xl shadow-lg overflow-hidden transition-all hover:shadow-xl">
+      ${img ? `<img src="${img}" alt="${title}" class="w-full h-48 object-cover" />` : ''}
+      <div class="p-6">
+        <h3 class="font-semibold text-lg mb-2">${title}</h3>
+        ${desc ? `<p class="text-gray-600 text-sm mb-3">${desc}</p>` : ''}
+        ${supplier ? `<p class="text-gray-500 text-xs mb-2">${supplier}</p>` : ''}
+        <div class="flex items-center justify-between mt-4">
+          ${
+            productUrl
+              ? `<a href="${productUrl}" target="_blank" rel="noopener noreferrer"
+                    class="text-primary font-semibold text-sm hover:underline">
+                    View Product →
+                 </a>`
+              : ''
+          }
+          ${priceText ? `<span class="text-gray-800 text-sm font-semibold">${priceText}</span>` : ''}
+        </div>
+      </div>
+    </article>
+  `;
+}).join('');
 
       // Simple local "save" to help partners see engagement without login
       grid.querySelectorAll('.save-idea').forEach(btn => {
