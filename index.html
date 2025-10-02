@@ -369,7 +369,7 @@
       const { data, error } = await _supabase
         .from('blog_posts')
         .select('slug,title,excerpt,cover_image_url,published,created_at')
-        .eq('published', true)                 // adjust if you use a different flag
+        .eq('published', [true,'true', 'TRUE', 't', 1)                 // adjust if you use a different flag
         .order('created_at', { ascending: false })
         .limit(3);
 
