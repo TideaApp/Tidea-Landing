@@ -189,14 +189,16 @@
     </div>
   </section>
 
-  <!-- Blog Preview -->
+<!-- Blog Preview -->
   <section id="blog" class="py-20 bg-gray-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
         <h2 class="text-3xl md:text-4xl font-bold mb-4">From Our Blog</h2>
         <p class="text-gray-600 max-w-2xl mx-auto">Stay informed with the latest tips, reviews, and trends in home organisation.</p>
       </div>
-      <div class="grid md:grid-cols-3 gap-8">
+
+      <!-- ✅ Fallback (static) – will be replaced by live posts if fetch succeeds -->
+      <div id="blog-grid" class="grid md:grid-cols-3 gap-8">
         <article class="bg-white rounded-2xl shadow-lg overflow-hidden transition-all hover:shadow-xl">
           <img src="/ARView.png" alt="AR Tech" class="w-full h-48 object-cover" />
           <div class="p-6">
@@ -224,7 +226,7 @@
       </div>
     </div>
   </section>
-  <!-- Nav: add after Blog -->
+
 
   <!-- Final Testflight CTA -->
   <section id="testflight" class="py-20 bg-gradient-to-br from-primary to-secondary">
