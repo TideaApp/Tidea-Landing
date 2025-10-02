@@ -388,7 +388,7 @@
           .select('slug,title,excerpt,cover_image_url,published,created_at')
           .eq('published', true)
           .order('created_at', { ascending: false })
-          .limit(3);
+          .limit(2);
 
         if (error || !Array.isArray(data) || !data.length) return; // keep fallback
 
