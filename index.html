@@ -190,45 +190,16 @@
   </section>
 
 <!-- Blog Preview -->
-  <section id="blog" class="py-20 bg-gray-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16">
-        <h2 class="text-3xl md:text-4xl font-bold mb-4">From Our Blog</h2>
-        <p class="text-gray-600 max-w-2xl mx-auto">Stay informed with the latest tips, reviews, and trends in home organisation.</p>
-      </div>
-      <div id="blog-grid" class="grid md:grid-cols-3 gap-8"></div>
+<section id="blog" class="py-20 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">From Our Blog</h2>
+      <p class="text-gray-600 max-w-2xl mx-auto">Stay informed with the latest tips, reviews, and trends in home organisation.</p>
     </div>
-  </section>
-
-      <!-- ✅ Fallback (static) – will be replaced by live posts if fetch succeeds -->
-      <div id="blog-grid" class="grid md:grid-cols-3 gap-8">
-        <article class="bg-white rounded-2xl shadow-lg overflow-hidden transition-all hover:shadow-xl">
-          <img src="/ARView.png" alt="AR Tech" class="w-full h-48 object-cover" />
-          <div class="p-6">
-            <span class="text-xs font-semibold text-primary uppercase tracking-wide">Technology</span>
-            <h3 class="font-semibold text-lg mt-2 mb-3">The Future of Home Organisation is AR</h3>
-            <p class="text-gray-600 text-sm">Explore how augmented reality is set to revolutionise the way we organise our living spaces.</p>
-          </div>
-        </article>
-        <article class="bg-white rounded-2xl shadow-lg overflow-hidden transition-all hover:shadow-xl">
-          <img src="/Drawer.jpg" alt="Drawer Organisation" class="w-full h-48 object-cover" />
-          <div class="p-6">
-            <span class="text-xs font-semibold text-secondary uppercase tracking-wide">Review</span>
-            <h3 class="font-semibold text-lg mt-2 mb-3">Top 5 Modular Storage Solutions of 2024</h3>
-            <p class="text-gray-600 text-sm">We tested the best modular organisers on the market. Here are our top picks.</p>
-          </div>
-        </article>
-        <article class="bg-white rounded-2xl shadow-lg overflow-hidden transition-all hover:shadow-xl">
-          <img src="/Pantry.jpg" alt="Organised Pantry" class="w-full h-48 object-cover" />
-          <div class="p-6">
-            <span class="text-xs font-semibold text-primary uppercase tracking-wide">Trends</span>
-            <h3 class="font-semibold text-lg mt-2 mb-3">Embracing Minimalism: A Beginner's Guide</h3>
-            <p class="text-gray-600 text-sm">How to start your journey towards a more organised and minimalist home.</p>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
+    <!-- Single container the script will fill -->
+    <div id="blog-grid" class="grid md:grid-cols-3 gap-8"></div>
+  </div>
+</section>
 
 
   <!-- Final Testflight CTA -->
@@ -382,6 +353,7 @@
     const SUPABASE_URL = 'https://hciergtglghsfezgkkni.supabase.co';        // ← replace
     const SUPABASE_ANON_KEY = 'yJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhjaWVyZ3RnbGdoc2Zlemdra25pIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTY4NDMzOTQsImV4cCI6MjA3MjQxOTM5NH0.xyC-7gDbRh0OfZRxtTNOfVEHw0Kh0JBfDCqYcIC1POs'; // ← replace
     const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    loadBlogCards();
 
       // small HTML-escape helper
   function esc(s) {
