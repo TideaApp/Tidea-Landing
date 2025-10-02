@@ -384,7 +384,7 @@
     async function loadBlogCards() {
       try {
         const { data, error } = await _supabase
-          .from('blogs_posts') // ← your table name
+          .from('blog_posts') // ← your table name
           .select('slug,title,excerpt,cover_image,published,created_at')
           .eq('published', true)
           .order('created_at', { ascending: false })
