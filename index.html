@@ -5,20 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>TIDEA - Organisation Made Magical</title>
 
-  <!-- ✅ Favicon -->
   <link rel="icon" type="image/png" href="/favicon.png" />
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/feather-icons"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            primary: '#B85C38',   // Warm terracotta
-            secondary: '#5C4D3B', // Earthy brown
-            background: '#F7F3EF' // Warm off-white
+            primary: '#B85C38',
+            secondary: '#5C4D3B',
+            background: '#F7F3EF'
           }
         }
       }
@@ -28,14 +26,13 @@
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
     body { font-family: 'Inter', sans-serif; background-color: #F7F3EF; }
     .gradient-text { color: #B85C38; }
-    .hero-gradient { background: rgba(247, 243, 239, 0.9); }
     .feature-card:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04); }
     .transition-all { transition: all 0.3s ease-in-out; }
   </style>
 </head>
 <body class="bg-white text-gray-800 antialiased">
 
-  <!-- 🔔 Toasts container -->
+  <!-- Toasts -->
   <div id="toast-host" class="fixed top-4 right-4 z-[70] space-y-2"></div>
 
   <!-- Navigation -->
@@ -50,7 +47,7 @@
           <a href="#inspiration" class="text-gray-600 hover:text-primary transition-colors">Inspiration</a>
           <a href="#blog" class="text-gray-600 hover:text-primary transition-colors">Blog</a>
           <a href="#support" class="text-gray-600 hover:text-primary transition-colors">App Support</a>
-          <a href="#testflight" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition-colors font-medium">Join Testflight</a>
+          <a href="#testflight" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-[#9b4a2d] transition-colors font-medium">Join Testflight</a>
         </div>
         <button class="md:hidden" aria-label="Open menu">
           <i data-feather="menu" class="text-gray-600"></i>
@@ -59,7 +56,7 @@
     </div>
   </nav>
 
-  <!-- Hero Section -->
+  <!-- Hero -->
   <section id="hero" class="min-h-screen flex items-center justify-center relative overflow-hidden pt-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 py-20">
       <img src="/logo.png" alt="TIDEA Logo" class="h-16 mx-auto mb-6" />
@@ -71,22 +68,17 @@
         <span class="gradient-text">Augmented Reality</span>
       </h1>
       <p class="text-xl text-gray-600 mb-10 max-w-3xl mx-auto px-4">
-        TIDEA is the revolutionary app that uses AR to help you visualise and find products that perfectly fit your drawers, cupboards, and every unique space in your home.
+        TIDEA helps you visualise and find products that perfectly fit your drawers, cupboards, and every unique space in your home.
         <br /><br />
         Organisation, made magical.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-        <!-- ✅ Hero Testlight Form -->
         <form id="testflight-form" class="flex flex-col sm:flex-row gap-2 w-full max-w-md" action="/thank-you.html" method="POST">
-          <input
-            type="email"
-            name="email"
-            placeholder="Enter your email address"
-            required
-            class="flex-grow px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-          />
-          <button type="submit" class="bg-primary text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition-colors font-medium whitespace-nowrap">
-              Join TestFlight          </button>
+          <input type="email" name="email" placeholder="Enter your email address" required
+                 class="flex-grow px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" />
+          <button type="submit" class="bg-primary text-white px-6 py-3 rounded-lg hover:bg-[#9b4a2d] transition-colors font-medium whitespace-nowrap">
+            Join TestFlight
+          </button>
         </form>
       </div>
       <p class="text-sm text-gray-500 mt-4">Register your interest to be the first to experience TIDEA.</p>
@@ -96,12 +88,12 @@
     </div>
   </section>
 
-  <!-- Features Section -->
+  <!-- Features -->
   <section id="features" class="py-20 bg-gray-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
         <h2 class="text-3xl md:text-4xl font-bold mb-4">How TIDEA Transforms Your Space</h2>
-        <p class="text-gray-600 max-w-2xl mx-auto">Our cutting-edge features are designed to make home organisation intuitive, efficient, and surprisingly fun.</p>
+        <p class="text-gray-600 max-w-2xl mx-auto">Make home organisation intuitive, efficient, and surprisingly fun.</p>
       </div>
       <div class="grid md:grid-cols-3 gap-8">
         <div class="feature-card bg-white p-8 rounded-2xl shadow-lg transition-all">
@@ -109,112 +101,102 @@
             <i data-feather="maximize" class="text-primary w-7 h-7"></i>
           </div>
           <h3 class="text-xl font-semibold mb-3">AR Product Fit Visualisation</h3>
-          <p class="text-gray-600">See how storage solutions, organisers, and furniture will look and fit in your actual drawers and cupboards before you buy. No more guesswork!</p>
+          <p class="text-gray-600">See how organisers and furniture will look and fit in your space before you buy.</p>
         </div>
         <div class="feature-card bg-white p-8 rounded-2xl shadow-lg transition-all">
           <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
             <i data-feather="zap" class="text-primary w-7 h-7"></i>
           </div>
           <h3 class="text-xl font-semibold mb-3">Smart Organisation Inspiration</h3>
-          <p class="text-gray-600">Get inspired by functional interior design ideas tailored for different areas of your home—from the kitchen pantry to the home office.</p>
+          <p class="text-gray-600">Ideas tailored for each area of your home—from pantry to home office.</p>
         </div>
         <div class="feature-card bg-white p-8 rounded-2xl shadow-lg transition-all">
           <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
             <i data-feather="edit-3" class="text-primary w-7 h-7"></i>
           </div>
           <h3 class="text-xl font-semibold mb-3">Expert Reviews & Trends</h3>
-          <p class="text-gray-600">Access our curated blog for honest product reviews, practical organisation articles, and the latest trends in home storage solutions.</p>
+          <p class="text-gray-600">Honest product reviews, practical guides, and the latest storage trends.</p>
         </div>
       </div>
     </div>
   </section>
 
-<!-- App Screenshots -->
-<section id="screenshots" class="py-16 bg-white">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-8">
-      <h2 class="text-3xl md:text-4xl font-bold">App Preview</h2>
-      <a href="#" class="text-primary hover:underline text-sm inline-block mt-2">Join TestFlight (Register for invite)</a>
+  <!-- App Screenshots -->
+  <section id="screenshots" class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-8">
+        <h2 class="text-3xl md:text-4xl font-bold">App Preview</h2>
+        <a href="#" class="text-primary hover:underline text-sm inline-block mt-2">Join TestFlight (Register for invite)</a>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+        <img src="/home.png" alt="TIDEA home screen" class="rounded-2xl border border-gray-200 shadow-sm">
+        <img src="/Describe.png" alt="Describe your space screen" class="rounded-2xl border border-gray-200 shadow-sm">
+        <img src="/scan.png" alt="AR scan flow" class="rounded-2xl border border-gray-200 shadow-sm">
+        <img src="/Results.png" alt="Results with suggestions" class="rounded-2xl border border-gray-200 shadow-sm">
+        <img src="/Inspiration.png" alt="Product details" class="rounded-2xl border border-gray-200 shadow-sm">
+        <img src="/blog.png" alt="Blog" class="rounded-2xl border border-gray-200 shadow-sm">
+      </div>
+
+      <p class="text-sm text-gray-500 mt-4 text-center">Screenshots are from an MVP build. Features and UI may change.</p>
     </div>
+  </section>
 
-    <!-- 3–6 screenshots; replace src with your exports -->
-    <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
-      <img src="/home.png" alt="TIDEA home screen" class="rounded-2xl border border-gray-200 shadow-sm">
-      <img src="/Describe.png" alt="Describe your space screen" class="rounded-2xl border border-gray-200 shadow-sm">
-      <img src="/scan.png" alt="AR scan flow" class="rounded-2xl border border-gray-200 shadow-sm">
-      <img src="/Results.png" alt="Results with suggestions" class="rounded-2xl border border-gray-200 shadow-sm">
-      <img src="/Inspiration.png" alt="Product details" class="rounded-2xl border border-gray-200 shadow-sm">
-      <img src="/blog.png" alt="Product details" class="rounded-2xl border border-gray-200 shadow-sm">
-
-    </div>
-
-    <p class="text-sm text-gray-500 mt-4">Screenshots are from an MVP build. Features and UI may change.</p>
-  </div>
-</section>
-  
-  <!-- Inspiration Preview -->
+  <!-- Inspiration Preview (links to ideas.html) -->
   <section id="inspiration" class="py-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
         <h2 class="text-3xl md:text-4xl font-bold mb-4">A Glimpse of Inspiration</h2>
-        <p class="text-gray-600 max-w-2xl mx-auto">Discover how TIDEA can help you reimagine every corner of your home.</p>
+        <p class="text-gray-600 max-w-2xl mx-auto">Reimagine every corner of your home.</p>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="group relative overflow-hidden rounded-2xl h-64">
+        <a href="/ideas.html?category=kitchen" class="group relative overflow-hidden rounded-2xl h-64 block">
           <img src="/kitchen.jpg" alt="Kitchen Organisation" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
           <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-6">
             <h4 class="text-white font-semibold text-lg">Kitchen & Pantry</h4>
           </div>
-        </div>
-        <div class="group relative overflow-hidden rounded-2xl h-64">
+        </a>
+        <a href="/ideas.html?category=bedroom" class="group relative overflow-hidden rounded-2xl h-64 block">
           <img src="/bedroom.jpg" alt="Bedroom" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
           <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-6">
             <h4 class="text-white font-semibold text-lg">Bedroom</h4>
           </div>
-        </div>
-        <div class="group relative overflow-hidden rounded-2xl h-64">
+        </a>
+        <a href="/ideas.html?category=utility" class="group relative overflow-hidden rounded-2xl h-64 block">
           <img src="/utility.jpg" alt="Utility Room" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
           <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-6">
             <h4 class="text-white font-semibold text-lg">Utility Room</h4>
           </div>
-        </div>
-        <div class="group relative overflow-hidden rounded-2xl h-64">
+        </a>
+        <a href="/ideas.html?category=underbed" class="group relative overflow-hidden rounded-2xl h-64 block">
           <img src="/underbed.jpg" alt="Underbed Storage" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
           <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-6">
             <h4 class="text-white font-semibold text-lg">Underbed Storage</h4>
           </div>
-        </div>
+        </a>
       </div>
     </div>
   </section>
 
-<!-- Blog Preview -->
-<section id="blog" class="py-20 bg-gray-50">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-16">
-      <h2 class="text-3xl md:text-4xl font-bold mb-4">From Our Blog</h2>
-      <p class="text-gray-600 max-w-2xl mx-auto">Stay informed with the latest tips, reviews, and trends in home organisation.</p>
+  <!-- Blog -->
+  <section id="blog" class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">From Our Blog</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">Tips, reviews, and trends in home organisation.</p>
+      </div>
+      <div id="blog-grid" class="grid md:grid-cols-3 gap-8"></div>
     </div>
-    <!-- Single container the script will fill -->
-    <div id="blog-grid" class="grid md:grid-cols-3 gap-8"></div>
-  </div>
-</section>
+  </section>
 
-
-  <!-- Final Testflight CTA -->
+  <!-- TestFlight CTA -->
   <section id="testflight" class="py-20 bg-gradient-to-br from-primary to-secondary">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
       <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Revolutionise Your Home?</h2>
-      <p class="text-xl text-white/90 mb-8 max-w-2xl mx-auto">Join the TIDEA testflight today and be among the first to experience the future of home organisation.</p>
-      <!-- ✅ Footer Tesflight Form -->
+      <p class="text-xl text-white/90 mb-8 max-w-2xl mx-auto">Join the TIDEA testflight and be among the first to experience the future of home organisation.</p>
       <form id="testflight-form-2" class="flex flex-col sm:flex-row gap-2 justify-center items-center max-w-md mx-auto" action="/thank-you.html" method="POST">
-        <input
-          type="email"
-          name="email"
-          placeholder="Your email address"
-          required
-          class="flex-grow px-4 py-3 rounded-lg border border-white/30 bg-white/20 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent"
-        />
+        <input type="email" name="email" placeholder="Your email address" required
+               class="flex-grow px-4 py-3 rounded-lg border border-white/30 bg-white/20 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent" />
         <button type="submit" class="bg-white text-primary px-6 py-3 rounded-lg hover:bg-gray-100 transition-colors font-medium whitespace-nowrap font-semibold">
           Join Testflight Now
         </button>
@@ -224,41 +206,41 @@
   </section>
 
   <!-- App Privacy Summary -->
-<section id="privacy-summary" class="py-16 bg-gray-50">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <h2 class="text-3xl md:text-4xl font-bold mb-4 text-center">App Privacy Summary</h2>
-    <div class="bg-white border border-gray-200 rounded-2xl p-6">
-      <ul class="space-y-3 text-gray-700 text-left">
-        <li><span class="font-semibold">Data collected:</span> Email (testflight/newsletter only).</li>
-        <li><span class="font-semibold">Purpose:</span> Updates, early access, and announcements.</li>
-        <li><span class="font-semibold">Sharing:</span> We do <em>not</em> sell your data. Limited processing by trusted providers (e.g., Netlify, Mailchimp).</li>
-        <li><span class="font-semibold">Control:</span> You can unsubscribe any time via email footer or by contacting <a href="mailto:hello@tidea.app" class="underline text-primary">hello@tidea.app</a>.</li>
-      </ul>
-      <p class="text-sm text-gray-500 mt-4 text-left">
-        Full details in our <a href="/privacy.html" class="underline text-primary">Privacy Policy</a>.
-      </p>
+  <section id="privacy-summary" class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4 text-center">App Privacy Summary</h2>
+      <div class="bg-white border border-gray-200 rounded-2xl p-6">
+        <ul class="space-y-3 text-gray-700 text-left">
+          <li><span class="font-semibold">Data collected:</span> Email (testflight/newsletter only).</li>
+          <li><span class="font-semibold">Purpose:</span> Updates, early access, and announcements.</li>
+          <li><span class="font-semibold">Sharing:</span> We do <em>not</em> sell your data. Limited processing by trusted providers (e.g., Netlify, Mailchimp).</li>
+          <li><span class="font-semibold">Control:</span> You can unsubscribe any time via email footer or by contacting <a href="mailto:hello@tidea.app" class="underline text-primary">hello@tidea.app</a>.</li>
+        </ul>
+        <p class="text-sm text-gray-500 mt-4 text-left">
+          Full details in our <a href="/privacy.html" class="underline text-primary">Privacy Policy</a>.
+        </p>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- App Support -->
-<section id="support" class="py-16 bg-white">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <h2 class="text-3xl md:text-4xl font-bold mb-4 text-center">App Support</h2>
-    <div class="bg-white border border-gray-200 rounded-2xl p-6">
-      <p class="text-gray-700 text-left">
-        Need help or want to share feedback? Email us at
-        <a href="mailto:hello@tidea.app" class="underline text-primary">hello@tidea.app</a>
-        and we’ll get back to you.
-      </p>
-      <ul class="list-disc pl-6 mt-4 text-gray-700 text-left">
-        <li>Report a bug</li>
-        <li>Suggest a feature</li>
-        <li>Press & partnership enquiries</li>
-      </ul>
+  <!-- App Support -->
+  <section id="support" class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4 text-center">App Support</h2>
+      <div class="bg-white border border-gray-200 rounded-2xl p-6">
+        <p class="text-gray-700 text-left">
+          Need help or want to share feedback? Email us at
+          <a href="mailto:hello@tidea.app" class="underline text-primary">hello@tidea.app</a>
+          and we’ll get back to you.
+        </p>
+        <ul class="list-disc pl-6 mt-4 text-gray-700 text-left">
+          <li>Report a bug</li>
+          <li>Suggest a feature</li>
+          <li>Press & partnership enquiries</li>
+        </ul>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
   <!-- Footer -->
   <footer class="bg-gray-900 text-white py-12">
@@ -276,7 +258,7 @@
     </div>
   </footer>
 
-  <!-- ✅ Cookie Consent Banner -->
+  <!-- Cookie Consent -->
   <div id="cookie-banner" class="fixed inset-x-0 bottom-0 z-[60] hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-6">
       <div class="bg-white border border-gray-200 rounded-xl shadow-xl px-5 py-4 flex flex-col md:flex-row md:items-center md:justify-between gap-3">
@@ -285,184 +267,152 @@
           Read our <a href="/privacy.html" class="underline text-primary">Privacy Policy</a>.
         </p>
         <div class="flex gap-3 justify-end">
-          <button id="cookie-decline" class="px-4 py-2 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-50 text-sm">
-            Decline
-          </button>
-          <button id="cookie-accept" class="px-4 py-2 rounded-lg bg-primary text-white hover:bg-[#9b4a2d] text-sm font-semibold">
-            Accept
-          </button>
+          <button id="cookie-decline" class="px-4 py-2 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-50 text-sm">Decline</button>
+          <button id="cookie-accept" class="px-4 py-2 rounded-lg bg-primary text-white hover:bg-[#9b4a2d] text-sm font-semibold">Accept</button>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Supabase client (for testflight storage) -->
+  <!-- Supabase client -->
   <script src="https://unpkg.com/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 
- <script>
-  // Icons + year
-  feather.replace();
-  document.getElementById('year').textContent = new Date().getFullYear();
+  <script>
+    // Icons + year
+    feather.replace();
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-  // Cookie banner logic
-  (function () {
-    var KEY = 'tidea_cookie_consent_v1';
-    var banner = document.getElementById('cookie-banner');
-    if (!localStorage.getItem(KEY)) banner.classList.remove('hidden');
-    document.getElementById('cookie-accept').onclick = () => { localStorage.setItem(KEY, 'accepted'); banner.classList.add('hidden'); };
-    document.getElementById('cookie-decline').onclick = () => { localStorage.setItem(KEY, 'declined'); banner.classList.add('hidden'); };
-  })();
+    // Cookie banner logic
+    (function () {
+      var KEY = 'tidea_cookie_consent_v1';
+      var banner = document.getElementById('cookie-banner');
+      if (!localStorage.getItem(KEY)) banner.classList.remove('hidden');
+      document.getElementById('cookie-accept').onclick = () => { localStorage.setItem(KEY, 'accepted'); banner.classList.add('hidden'); };
+      document.getElementById('cookie-decline').onclick = () => { localStorage.setItem(KEY, 'declined'); banner.classList.add('hidden'); };
+    })();
 
-  // 🔔 Toast helper
-  function showToast(message, type = 'info') {
-    const host = document.getElementById('toast-host');
-    const base = 'rounded-lg px-4 py-3 shadow-lg border flex items-start gap-3';
-    const styles = {
-      success: 'bg-white border-green-200 text-green-800',
-      error:   'bg-white border-red-200 text-red-800',
-      info:    'bg-white border-gray-200 text-gray-800',
-      warn:    'bg-white border-yellow-200 text-yellow-800'
-    };
-    const icon = { success: 'check-circle', error: 'alert-triangle', info: 'info', warn: 'alert-circle' }[type] || 'info';
+    function showToast(message, type = 'info') {
+      const host = document.getElementById('toast-host');
+      const base = 'rounded-lg px-4 py-3 shadow-lg border flex items-start gap-3';
+      const styles = {
+        success: 'bg-white border-green-200 text-green-800',
+        error:   'bg-white border-red-200 text-red-800',
+        info:    'bg-white border-gray-200 text-gray-800',
+        warn:    'bg-white border-yellow-200 text-yellow-800'
+      };
+      const icon = { success: 'check-circle', error: 'alert-triangle', info: 'info', warn: 'alert-circle' }[type] || 'info';
 
-    const el = document.createElement('div');
-    el.className = base + ' ' + (styles[type] || styles.info);
-    el.innerHTML = `
-      <span class="mt-0.5"><i data-feather="${icon}"></i></span>
-      <div class="text-sm leading-snug">${message}</div>
-      <button class="ml-3 text-xs opacity-70 hover:opacity-100">Dismiss</button>
-    `;
-    host.appendChild(el);
-    feather.replace({ 'aria-hidden': 'true' });
-    const remove = () => { el.classList.add('opacity-0','transition','duration-200'); setTimeout(() => el.remove(), 220); };
-    el.querySelector('button')?.addEventListener('click', remove);
-    setTimeout(remove, 3500);
-  }
-
-  // ✅ Supabase client
-  const SUPABASE_URL = 'https://hciergtglghsfezgkkni.supabase.co';
-  const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhjaWVyZ3RnbGdoc2Zlemdra25pIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTY4NDMzOTQsImV4cCI6MjA3MjQxOTM5NH0.xyC-7gDbRh0OfZRxtTNOfVEHw0Kh0JBfDCqYcIC1POs';
-  const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-
-  // small HTML-escape helper
-  function esc(s) {
-    return String(s || '')
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;');
-  }
-
-  // Robust truthy check for `published` that handles boolean or text flags
-  function isPublished(v) {
-    if (v === true) return true;
-    if (typeof v === 'string') {
-      const s = v.trim().toLowerCase();
-      return s === 'true' || s === 't' || s === '1' || s === 'yes';
+      const el = document.createElement('div');
+      el.className = base + ' ' + (styles[type] || styles.info);
+      el.innerHTML = `
+        <span class="mt-0.5"><i data-feather="${icon}"></i></span>
+        <div class="text-sm leading-snug">${message}</div>
+        <button class="ml-3 text-xs opacity-70 hover:opacity-100">Dismiss</button>
+      `;
+      host.appendChild(el);
+      feather.replace({ 'aria-hidden': 'true' });
+      const remove = () => { el.classList.add('opacity-0','transition','duration-200'); setTimeout(() => el.remove(), 220); };
+      el.querySelector('button')?.addEventListener('click', remove);
+      setTimeout(remove, 3500);
     }
-    if (typeof v === 'number') return v === 1;
-    return false;
-  }
 
-  async function loadBlogCards() {
-    const grid = document.getElementById('blog-grid');
-    if (!grid) return;
+    // Supabase client
+    const SUPABASE_URL = 'https://hciergtglghsfezgkkni.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhjaWVyZ3RnbGdoc2Zlemdra25pIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTY4NDMzOTQsImV4cCI6MjA3MjQxOTM5NH0.xyC-7gDbRh0OfZRxtTNOfVEHw0Kh0JBfDCqYcIC1POs';
+    const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-    try {
-      // Try to order by published_at if it exists; otherwise fall back to created_at.
-      let query = _supabase
-        .from('blog_posts')
-        .select('slug,title,excerpt,cover_image_url,published,created_at,published_at')
-        .order('published_at', { ascending: false, nullsFirst: false });
-
-      // If your column published_at doesn't exist, Supabase will still return (ordering simply won't apply).
-      const { data, error } = await query.limit(12); // fetch a few, we'll filter client-side
-
-      console.log('[blog] fetch result:', { error, count: data?.length, rows: data });
-
-      if (error) {
-        console.warn('[blog] query error:', error);
-        return;
-      }
-      if (!Array.isArray(data)) return;
-
-      // Filter to published rows on the client to tolerate boolean-or-text flags
-      const publishedRows = data.filter(r => isPublished(r.published));
-
-      // Pick latest 3 (already ordered)
-      const rows = publishedRows.slice(0, 3);
-
-      if (rows.length === 0) {
-        grid.innerHTML = `
-          <div class="col-span-3 text-center text-gray-500">
-            No published posts yet.
-          </div>
-        `;
-        return;
-      }
-
-      const cards = rows.map((post) => {
-        const img = esc(post.cover_image_url || '/Pantry.jpg');
-        const title = esc(post.title || 'Untitled');
-        const excerpt = esc(post.excerpt || '');
-        const href = post.slug ? `/post.html?slug=${encodeURIComponent(post.slug)}` : '#';
-        return `
-          <article class="bg-white rounded-2xl shadow-lg overflow-hidden transition-all hover:shadow-xl">
-            <img src="${img}" alt="${title}" class="w-full h-48 object-cover" />
-            <div class="p-6">
-              <h3 class="font-semibold text-lg mt-2 mb-3">${title}</h3>
-              <p class="text-gray-600 text-sm mb-3">${excerpt}</p>
-              <a href="${href}" class="text-primary font-semibold text-sm hover:underline">Read More →</a>
-            </div>
-          </article>
-        `;
-      }).join('');
-
-      grid.innerHTML = cards;
-    } catch (err) {
-      console.warn('[blog] runtime error:', err);
-      // leave empty if it fails
+    // Escaper
+    function esc(s) {
+      return String(s || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
     }
-  }
 
-  // 🧠 Make sure DOM exists *and* Supabase is ready
-  document.addEventListener('DOMContentLoaded', loadBlogCards);
+    function isPublished(v) {
+      if (v === true) return true;
+      if (typeof v === 'string') { const s = v.trim().toLowerCase(); return s === 'true' || s === 't' || s === '1' || s === 'yes'; }
+      if (typeof v === 'number') return v === 1;
+      return false;
+    }
 
-  // ---------- (your waitlist/testflight form handler stays as-is below) ----------
-  document.querySelectorAll('form[action="/thank-you.html"]').forEach((form) => {
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const emailInput = form.querySelector('input[type="email"]');
-      const btn = form.querySelector('button[type="submit"]');
-      const email = (emailInput?.value || '').trim();
-
-      const ok = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
-      if (!ok) { showToast('Please enter a valid email address.', 'warn'); emailInput?.focus(); return; }
-
-      const originalLabel = btn.textContent;
-      btn.disabled = true; btn.textContent = 'Adding…';
-
-      const source = form.id === 'testflight-form' ? 'hero'
-                   : form.id === 'testflight-form-2' ? 'footer'
-                   : 'unknown';
-
+    // Blog cards (unchanged logic you already had working)
+    async function loadBlogCards() {
+      const grid = document.getElementById('blog-grid');
+      if (!grid) return;
       try {
-        const { error } = await _supabase.from('waitlist').insert({ email, source, ua: navigator.userAgent || '' });
-        if (error) {
-          let message = 'Could not save your email. Please try again.';
-          const emsg = (error.message || '').toLowerCase();
-          if (emsg.includes('duplicate key') || emsg.includes('unique constraint')) {
-            message = 'You’re already on the waiting list!'; showToast(message, 'info');
-          } else { showToast(message, 'error'); }
-          btn.disabled = false; btn.textContent = originalLabel; return;
+        let query = _supabase
+          .from('blog_posts')
+          .select('slug,title,excerpt,cover_image_url,published,created_at,published_at')
+          .order('published_at', { ascending: false });
+
+        const { data, error } = await query.limit(12);
+        if (error || !Array.isArray(data)) return;
+
+        const rows = data.filter(r => isPublished(r.published)).slice(0, 3);
+        if (!rows.length) {
+          grid.innerHTML = `<div class="col-span-3 text-center text-gray-500">No published posts yet.</div>`;
+          return;
         }
-        window.location.href = '/thank-you.html';
-      } catch {
-        showToast('Network error. Please try again.', 'error');
-        btn.disabled = false; btn.textContent = originalLabel;
-      }
+
+        const cards = rows.map((post) => {
+          const img = esc(post.cover_image_url || '/Pantry.jpg');
+          const title = esc(post.title || 'Untitled');
+          const excerpt = esc(post.excerpt || '');
+          const href = post.slug ? `/post.html?slug=${encodeURIComponent(post.slug)}` : '#';
+          return `
+            <article class="bg-white rounded-2xl shadow-lg overflow-hidden transition-all hover:shadow-xl">
+              <img src="${img}" alt="${title}" class="w-full h-48 object-cover" />
+              <div class="p-6">
+                <h3 class="font-semibold text-lg mt-2 mb-3">${title}</h3>
+                <p class="text-gray-600 text-sm mb-3">${excerpt}</p>
+                <a href="${href}" class="text-primary font-semibold text-sm hover:underline">Read More →</a>
+              </div>
+            </article>
+          `;
+        }).join('');
+        grid.innerHTML = cards;
+      } catch {}
+    }
+
+    document.addEventListener('DOMContentLoaded', loadBlogCards);
+
+    // TestFlight forms → Supabase waitlist table
+    document.querySelectorAll('form[action="/thank-you.html"]').forEach((form) => {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const emailInput = form.querySelector('input[type="email"]');
+        const btn = form.querySelector('button[type="submit"]');
+        const email = (emailInput?.value || '').trim();
+
+        const ok = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
+        if (!ok) { showToast('Please enter a valid email address.', 'warn'); emailInput?.focus(); return; }
+
+        const originalLabel = btn.textContent;
+        btn.disabled = true; btn.textContent = 'Adding…';
+
+        const source = form.id === 'testflight-form' ? 'hero'
+                     : form.id === 'testflight-form-2' ? 'footer'
+                     : 'unknown';
+
+        try {
+          const { error } = await _supabase.from('waitlist').insert({ email, source, ua: navigator.userAgent || '' });
+          if (error) {
+            let message = 'Could not save your email. Please try again.';
+            const emsg = (error.message || '').toLowerCase();
+            if (emsg.includes('duplicate key') || emsg.includes('unique constraint')) {
+              message = 'You’re already on the waiting list!'; showToast(message, 'info');
+            } else { showToast(message, 'error'); }
+            btn.disabled = false; btn.textContent = originalLabel; return;
+          }
+          window.location.href = '/thank-you.html';
+        } catch {
+          showToast('Network error. Please try again.', 'error');
+          btn.disabled = false; btn.textContent = originalLabel;
+        }
+      });
     });
-  });
-</script>
+  </script>
 </body>
 </html>
