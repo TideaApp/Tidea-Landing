@@ -161,7 +161,7 @@
 
   // 4) Render cards (use `filtered`, not `rows`)
   const cards = filtered.map((item) => {
-    const img = esc(item.image_url || '/placeholder.jpg');
+    const img = item.image_url ? esc(item.image_url) : null;
     const title = esc(item.title || 'Untitled');
     const desc = esc(item.description || '');
 
