@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TIDEA – Inspiration</title>
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, sans-serif; background-color:#F7F3EF; }
+  </style>
+</head>
+<body class="bg-white text-gray-800 antialiased">
+  <nav class="w-full bg-white/90 backdrop-blur-md border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="/" class="flex items-center space-x-2">
+        <img src="/logo.png" alt="TIDEA Logo" class="h-10" />
+      </a>
+      <div class="hidden md:flex items-center space-x-8">
+        <a href="/#features" class="text-gray-600 hover:text-[#B85C38]">Features</a>
+        <a href="/#inspiration" class="text-gray-600 hover:text-[#B85C38]">Inspiration</a>
+        <a href="/#blog" class="text-gray-600 hover:text-[#B85C38]">Blog</a>
+        <a href="/#testflight" class="bg-[#B85C38] text-white px-4 py-2 rounded-lg hover:bg-[#9b4a2d] font-medium">Join Testflight</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="bg-gray-50 border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 text-center">
+      <h1 id="page-title" class="text-3xl md:text-4xl font-bold">Inspiration</h1>
+      <p class="text-gray-600 mt-2">Real ideas with real products that fit.</p>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    <!-- Affiliate note -->
+    <div class="bg-amber-50 border border-amber-200 text-amber-900 rounded-xl p-4 mb-8">
+      <p class="text-sm">
+        Heads up: some links may be affiliate links. If you buy through them, we may earn a small commission at no extra cost to you.
+      </p>
+    </div>
+
+    <div id="grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+
+    <!-- Empty state -->
+    <div id="empty" class="hidden text-center text-gray-500 mt-10">
+      No ideas found for this category yet.
+    </div>
+  </main>
+
+  <footer class="bg-gray-900 text-white py-12 mt-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <img src="/logo.png" alt="TIDEA Logo" class="h-10 mb-4 md:mb-0" />
+        <p class="text-gray-400 text-sm">© <span id="year"></span> TIDEA. Organisation, Made Magical.</p>
+        <div class="flex space-x-6 mt-4 md:mt-0 text-sm">
+          <a href="/privacy.html" class="text-gray-400 hover:text-white">Privacy Policy</a>
+          <a href="/terms.html" class="text-gray-400 hover:text-white">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Supabase -->
+  <script src="https://unpkg.com/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // --- Config (use your existing values) ---
+    const SUPABASE_URL = 'https://hciergtglghsfezgkkni.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhjaWVyZ3RnbGdoc2Zlemdra25pIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTY4NDMzOTQsImV4cCI6MjA3MjQxOTM5NH0.xyC-7gDbRh0OfZRxtTNOfVEHw0Kh0JBfDCqYcIC1POs';
+    const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    // --- Helpers ---
+    const params = new URLSearchParams(location.search);
+    const category = (params.get('category') || '').trim().toLowerCase();
+    const titleMap = {
+      kitchen: 'Kitchen & Pantry',
+      bedroom: 'Bedroom',
+      utility: 'Utility Room',
+      underbed: 'Underbed Storage'
+      // add more if you have more categories
+    };
+    if (category) {
+      document.getElementById('page-title').textContent = `Inspiration – ${titleMap[category] || category}`;
+    }
+
+    function esc(s) {
+      return String(s || '')
+        .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+    function normalizeTags(input) {
+      if (!input) return [];
+      if (Array.isArray(input)) return input.map(t => String(t ?? '').trim().toLowerCase()).filter(Boolean);
+      const s = String(input).trim();
+      if (s.startsWith('[')) {
+        try {
+          const arr = JSON.parse(s);
+          return Array.isArray(arr) ? arr.map(t => String(t ?? '').trim().toLowerCase()) : [];
+        } catch { return []; }
+      }
+      if (s.startsWith('{') && s.endsWith('}')) {
+        return s.slice(1, -1).split(',').map(t => t.replace(/"/g,'').trim().toLowerCase()).filter(Boolean);
+      }
+      return [s.toLowerCase()];
+    }
+    function formatPrice(amount, currency) {
+      if (amount == null) return null;
+      const code = (currency || 'GBP').toUpperCase();
+      try { return new Intl.NumberFormat('en-GB', { style: 'currency', currency: code }).format(Number(amount)); }
+      catch { const symbol = code === 'GBP' ? '£' : ''; return `${symbol}${Number(amount).toFixed(2)}${symbol ? '' : ` ${code}`}`; }
+    }
+    function normalizeUrl(u) {
+      if (!u) return null;
+      return /^https?:\/\//i.test(u) ? u : `https://${u}`;
+    }
+
+    async function loadIdeas() {
+      const grid = document.getElementById('grid');
+      const empty = document.getElementById('empty');
+
+      // 1) Fetch ideas
+      const { data: ideas, error } = await _supabase
+        .from('inspiration_public')
+        .select('id,title,description,image_url,tags,product_id,created_at')
+        .order('created_at', { ascending: false });
+
+      if (error) {
+        grid.innerHTML = `<div class="col-span-3 text-center text-red-600">Error loading ideas.</div>`;
+        return;
+      }
+
+      // 2) Filter by category via tags (client-side to tolerate multiple formats)
+      const filtered = (ideas || []).filter(r => {
+        const tags = normalizeTags(r.tags);
+        return category ? tags.includes(category) : true;
+      });
+
+      if (!filtered.length) {
+        empty.classList.remove('hidden');
+        return;
+      }
+
+      // 3) Fetch related products
+      const productIds = Array.from(new Set(filtered.map(i => i.product_id).filter(Boolean)));
+      let productMap = {};
+      if (productIds.length) {
+        const { data: products } = await _supabase
+          .from('products')
+          .select('id,display_name,supplier_name,product_url,price_numeric,currency')
+          .in('id', productIds);
+        productMap = (products || []).reduce((acc, p) => {
+          acc[p.id] = p;
+          return acc;
+        }, {});
+      }
+
+      // 4) Render cards
+      grid.innerHTML = filtered.map(item => {
+        const img = esc(item.image_url || '');
+        const title = esc(item.title || 'Idea');
+        const desc = esc(item.description || '');
+        const prod = item.product_id ? productMap[item.product_id] : null;
+        const supplier = prod?.supplier_name ? esc(prod.supplier_name) : '';
+        const price = formatPrice(prod?.price_numeric, prod?.currency);
+        const productUrl = normalizeUrl(prod?.product_url);
+
+        return `
+          <article class="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-200">
+            ${img ? `<img src="${img}" alt="${title}" class="w-full h-48 object-cover">` : ''}
+            <div class="p-6">
+              <h3 class="font-semibold text-lg mb-2">${title}</h3>
+              ${desc ? `<p class="text-gray-600 text-sm mb-3">${desc}</p>` : ''}
+
+              ${supplier || price ? `
+                <p class="text-gray-700 text-sm mb-3">
+                  ${supplier ? `<span class="font-medium">${supplier}</span>` : ''} ${price ? `• ${price}` : ''}
+                </p>` : ''}
+
+              <div class="flex items-center gap-3">
+                ${productUrl ? `
+                  <a href="${productUrl}" target="_blank" rel="noopener"
+                     class="inline-block border border-[#B85C38] text-[#B85C38] font-semibold px-3 py-2 rounded-lg hover:bg-[#B85C38] hover:text-white transition-colors text-sm">
+                    View product
+                  </a>` : ''}
+
+                <!-- Optional: local "save idea" using localStorage -->
+                <button data-id="${esc(item.id)}"
+                        class="save-idea inline-block bg-[#B85C38] text-white font-semibold px-3 py-2 rounded-lg hover:bg-[#9b4a2d] text-sm">
+                  Save idea
+                </button>
+              </div>
+            </div>
+          </article>
+        `;
+      }).join('');
+
+      // Simple local "save" to help partners see engagement without login
+      grid.querySelectorAll('.save-idea').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const id = e.currentTarget.getAttribute('data-id');
+          try {
+            const key = 'tidea_saved_ideas_v1';
+            const prev = JSON.parse(localStorage.getItem(key) || '[]');
+            if (!prev.includes(id)) prev.push(id);
+            localStorage.setItem(key, JSON.stringify(prev));
+            e.currentTarget.textContent = 'Saved ✓';
+          } catch {}
+        });
+      });
+    }
+
+    // Load
+    loadIdeas();
+  </script>
+</body>
+</html>
