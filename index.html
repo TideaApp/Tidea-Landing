@@ -397,8 +397,7 @@
 
         // Build new cards (same structure/formatting)
         const cards = data.map((post) => {
-          const img = esc(post.cover_image || '/Pantry.jpg');
-          const cat = esc(post.category || 'Article');
+          const img = esc(post.cover_image_url || '/Pantry.jpg');
           const title = esc(post.title || 'Untitled');
           const excerpt = esc(post.excerpt || '');
           const href = post.slug ? `/blog/${esc(post.slug)}` : '#';
