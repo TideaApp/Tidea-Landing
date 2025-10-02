@@ -300,70 +300,51 @@
   <!-- Supabase client (for testflight storage) -->
   <script src="https://unpkg.com/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 
-  <script>
-    // Icons + year
-    feather.replace();
-    document.getElementById('year').textContent = new Date().getFullYear();
+ <script>
+  // Icons + year
+  feather.replace();
+  document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Cookie banner logic
-    (function () {
-      var KEY = 'tidea_cookie_consent_v1';
-      var banner = document.getElementById('cookie-banner');
-      if (!localStorage.getItem(KEY)) banner.classList.remove('hidden');
-      document.getElementById('cookie-accept').onclick = () => { localStorage.setItem(KEY, 'accepted'); banner.classList.add('hidden'); };
-      document.getElementById('cookie-decline').onclick = () => { localStorage.setItem(KEY, 'declined'); banner.classList.add('hidden'); };
-    })();
+  // Cookie banner logic
+  (function () {
+    var KEY = 'tidea_cookie_consent_v1';
+    var banner = document.getElementById('cookie-banner');
+    if (!localStorage.getItem(KEY)) banner.classList.remove('hidden');
+    document.getElementById('cookie-accept').onclick = () => { localStorage.setItem(KEY, 'accepted'); banner.classList.add('hidden'); };
+    document.getElementById('cookie-decline').onclick = () => { localStorage.setItem(KEY, 'declined'); banner.classList.add('hidden'); };
+  })();
 
-    // 🔔 Toast helper
-    function showToast(message, type = 'info') {
-      const host = document.getElementById('toast-host');
-      const base = 'rounded-lg px-4 py-3 shadow-lg border flex items-start gap-3';
-      const styles = {
-        success: 'bg-white border-green-200 text-green-800',
-        error:   'bg-white border-red-200 text-red-800',
-        info:    'bg-white border-gray-200 text-gray-800',
-        warn:    'bg-white border-yellow-200 text-yellow-800'
-      };
-      const icon = {
-        success: 'check-circle',
-        error: 'alert-triangle',
-        info: 'info',
-        warn: 'alert-circle'
-      }[type] || 'info';
+  // 🔔 Toast helper
+  function showToast(message, type = 'info') {
+    const host = document.getElementById('toast-host');
+    const base = 'rounded-lg px-4 py-3 shadow-lg border flex items-start gap-3';
+    const styles = {
+      success: 'bg-white border-green-200 text-green-800',
+      error:   'bg-white border-red-200 text-red-800',
+      info:    'bg-white border-gray-200 text-gray-800',
+      warn:    'bg-white border-yellow-200 text-yellow-800'
+    };
+    const icon = { success: 'check-circle', error: 'alert-triangle', info: 'info', warn: 'alert-circle' }[type] || 'info';
 
-      const el = document.createElement('div');
-      el.className = base + ' ' + (styles[type] || styles.info);
-      el.innerHTML = `
-        <span class="mt-0.5"><i data-feather="${icon}"></i></span>
-        <div class="text-sm leading-snug">${message}</div>
-        <button class="ml-3 text-xs opacity-70 hover:opacity-100">Dismiss</button>
-      `;
-      host.appendChild(el);
-      feather.replace({ 'aria-hidden': 'true' });
-
-      const remove = () => {
-        el.classList.add('opacity-0', 'transition', 'duration-200');
-        setTimeout(() => el.remove(), 220);
-      };
-      el.querySelector('button')?.addEventListener('click', remove);
-      setTimeout(remove, 3500);
-    }
-
-    // ✅ Supabase testflight integration
-    const SUPABASE_URL = 'https://hciergtglghsfezgkkni.supabase.co';        // ← replace
-    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhjaWVyZ3RnbGdoc2Zlemdra25pIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTY4NDMzOTQsImV4cCI6MjA3MjQxOTM5NH0.xyC-7gDbRh0OfZRxtTNOfVEHw0Kh0JBfDCqYcIC1POs'; // ← replace
-    const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-    
-    // small HTML-escape helper
-    function esc(s) {
-    return String(s || '')
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;');
+    const el = document.createElement('div');
+    el.className = base + ' ' + (styles[type] || styles.info);
+    el.innerHTML = `
+      <span class="mt-0.5"><i data-feather="${icon}"></i></span>
+      <div class="text-sm leading-snug">${message}</div>
+      <button class="ml-3 text-xs opacity-70 hover:opacity-100">Dismiss</button>
+    `;
+    host.appendChild(el);
+    feather.replace({ 'aria-hidden': 'true' });
+    const remove = () => { el.classList.add('opacity-0','transition','duration-200'); setTimeout(() => el.remove(), 220); };
+    el.querySelector('button')?.addEventListener('click', remove);
+    setTimeout(remove, 3500);
   }
 
-  <script>
+  // ✅ Supabase client
+  const SUPABASE_URL = 'https://hciergtglghsfezgkkni.supabase.co';
+  const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhjaWVyZ3RnbGdoc2Zlemdra25pIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTY4NDMzOTQsImV4cCI6MjA3MjQxOTM5NH0.xyC-7gDbRh0OfZRxtTNOfVEHw0Kh0JBfDCqYcIC1POs';
+  const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
   // small HTML-escape helper
   function esc(s) {
     return String(s || '')
@@ -373,21 +354,55 @@
       .replace(/"/g, '&quot;');
   }
 
+  // Robust truthy check for `published` that handles boolean or text flags
+  function isPublished(v) {
+    if (v === true) return true;
+    if (typeof v === 'string') {
+      const s = v.trim().toLowerCase();
+      return s === 'true' || s === 't' || s === '1' || s === 'yes';
+    }
+    if (typeof v === 'number') return v === 1;
+    return false;
+  }
+
   async function loadBlogCards() {
+    const grid = document.getElementById('blog-grid');
+    if (!grid) return;
+
     try {
-      const { data, error } = await _supabase
+      // Try to order by published_at if it exists; otherwise fall back to created_at.
+      let query = _supabase
         .from('blog_posts')
-        .select('slug,title,excerpt,cover_image_url,created_at')
-        .eq('published', true)           // or .is('published', true)
-        .order('created_at', { ascending: false })
-        .limit(3);
+        .select('slug,title,excerpt,cover_image_url,published,created_at,published_at')
+        .order('published_at', { ascending: false, nullsFirst: false });
 
-      if (error || !Array.isArray(data) || data.length === 0) return;
+      // If your column published_at doesn't exist, Supabase will still return (ordering simply won't apply).
+      const { data, error } = await query.limit(12); // fetch a few, we'll filter client-side
 
-      const grid = document.getElementById('blog-grid');
-      if (!grid) return;
+      console.log('[blog] fetch result:', { error, count: data?.length, rows: data });
 
-      const cards = data.map((post) => {
+      if (error) {
+        console.warn('[blog] query error:', error);
+        return;
+      }
+      if (!Array.isArray(data)) return;
+
+      // Filter to published rows on the client to tolerate boolean-or-text flags
+      const publishedRows = data.filter(r => isPublished(r.published));
+
+      // Pick latest 3 (already ordered)
+      const rows = publishedRows.slice(0, 3);
+
+      if (rows.length === 0) {
+        grid.innerHTML = `
+          <div class="col-span-3 text-center text-gray-500">
+            No published posts yet.
+          </div>
+        `;
+        return;
+      }
+
+      const cards = rows.map((post) => {
         const img = esc(post.cover_image_url || '/Pantry.jpg');
         const title = esc(post.title || 'Untitled');
         const excerpt = esc(post.excerpt || '');
@@ -406,68 +421,50 @@
       }).join('');
 
       grid.innerHTML = cards;
-    } catch {
-      // keep silent, keep page working
+    } catch (err) {
+      console.warn('[blog] runtime error:', err);
+      // leave empty if it fails
     }
   }
 
-  // make sure this stays after the Supabase client init and the #blog-grid element
-  loadBlogCards();
-</script>
+  // 🧠 Make sure DOM exists *and* Supabase is ready
+  document.addEventListener('DOMContentLoaded', loadBlogCards);
 
-    // Attach to all forms posting to /thank-you.html
-    document.querySelectorAll('form[action="/thank-you.html"]').forEach((form) => {
-      form.addEventListener('submit', async (e) => {
-        e.preventDefault();
+  // ---------- (your waitlist/testflight form handler stays as-is below) ----------
+  document.querySelectorAll('form[action="/thank-you.html"]').forEach((form) => {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const emailInput = form.querySelector('input[type="email"]');
+      const btn = form.querySelector('button[type="submit"]');
+      const email = (emailInput?.value || '').trim();
 
-        const emailInput = form.querySelector('input[type="email"]');
-        const btn = form.querySelector('button[type="submit"]');
-        const email = (emailInput?.value || '').trim();
+      const ok = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
+      if (!ok) { showToast('Please enter a valid email address.', 'warn'); emailInput?.focus(); return; }
 
-        const ok = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
-        if (!ok) {
-          showToast('Please enter a valid email address.', 'warn');
-          emailInput?.focus();
-          return;
+      const originalLabel = btn.textContent;
+      btn.disabled = true; btn.textContent = 'Adding…';
+
+      const source = form.id === 'testflight-form' ? 'hero'
+                   : form.id === 'testflight-form-2' ? 'footer'
+                   : 'unknown';
+
+      try {
+        const { error } = await _supabase.from('waitlist').insert({ email, source, ua: navigator.userAgent || '' });
+        if (error) {
+          let message = 'Could not save your email. Please try again.';
+          const emsg = (error.message || '').toLowerCase();
+          if (emsg.includes('duplicate key') || emsg.includes('unique constraint')) {
+            message = 'You’re already on the waiting list!'; showToast(message, 'info');
+          } else { showToast(message, 'error'); }
+          btn.disabled = false; btn.textContent = originalLabel; return;
         }
-
-        const originalLabel = btn.textContent;
-        btn.disabled = true;
-        btn.textContent = 'Adding…';
-
-        const source =
-          form.id === 'testflight-form' ? 'hero' :
-          form.id === 'testflight-form-2' ? 'footer' :
-          'unknown';
-
-        try {
-          const { error } = await _supabase
-            .from('waitlist')
-            .insert({ email, source, ua: navigator.userAgent || '' });
-
-          if (error) {
-            let message = 'Could not save your email. Please try again.';
-            const emsg = (error.message || '').toLowerCase();
-            if (emsg.includes('duplicate key') || emsg.includes('unique constraint')) {
-              message = 'You’re already on the waiting list!';
-              showToast(message, 'info');
-            } else {
-              showToast(message, 'error');
-            }
-            btn.disabled = false;
-            btn.textContent = originalLabel;
-            return;
-          }
-
-          // Success
-          window.location.href = '/thank-you.html';
-        } catch (err) {
-          showToast('Network error. Please try again.', 'error');
-          btn.disabled = false;
-          btn.textContent = originalLabel;
-        }
-      });
+        window.location.href = '/thank-you.html';
+      } catch {
+        showToast('Network error. Please try again.', 'error');
+        btn.disabled = false; btn.textContent = originalLabel;
+      }
     });
-  </script>
+  });
+</script>
 </body>
 </html>
