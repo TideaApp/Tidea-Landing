@@ -364,7 +364,7 @@
   }
 
   <script>
-  // small HTML-escape helper (keep yours if already defined)
+  // small HTML-escape helper
   function esc(s) {
     return String(s || '')
       .replace(/&/g, '&amp;')
@@ -377,24 +377,12 @@
     try {
       const { data, error } = await _supabase
         .from('blog_posts')
-        .select('slug,title,excerpt,cover_image_url,published,created_at')
-        // ✅ if `published` is BOOLEAN use this:
-        .is('published', true)
-        // ✅ if (and only if) `published` is TEXT, swap the line above for:
-        // .in('published', [ 'true', 'TRUE', 't', '1', 'yes' ])
+        .select('slug,title,excerpt,cover_image_url,created_at')
+        .eq('published', true)           // or .is('published', true)
         .order('created_at', { ascending: false })
         .limit(3);
 
-      if (error) {
-        showToast('Blog load error: ' + (error.message || 'unknown'), 'error');
-        return;
-      }
-      if (!Array.isArray(data) || data.length === 0) {
-        // Optional: show a gentle empty state
-        const grid = document.getElementById('blog-grid');
-        if (grid) grid.innerHTML = '';
-        return;
-      }
+      if (error || !Array.isArray(data) || data.length === 0) return;
 
       const grid = document.getElementById('blog-grid');
       if (!grid) return;
@@ -418,13 +406,13 @@
       }).join('');
 
       grid.innerHTML = cards;
-    } catch (e) {
-      showToast('Blog load failed', 'error');
+    } catch {
+      // keep silent, keep page working
     }
   }
 
-  // make sure it runs
-  document.addEventListener('DOMContentLoaded', loadBlogCards);
+  // make sure this stays after the Supabase client init and the #blog-grid element
+  loadBlogCards();
 </script>
 
     // Attach to all forms posting to /thank-you.html
