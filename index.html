@@ -50,7 +50,7 @@
           <a href="#inspiration" class="text-gray-600 hover:text-primary transition-colors">Inspiration</a>
           <a href="#blog" class="text-gray-600 hover:text-primary transition-colors">Blog</a>
           <a href="#support" class="text-gray-600 hover:text-primary transition-colors">App Support</a>
-          <a href="#waitlist" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition-colors font-medium">Join Waitlist</a>
+          <a href="#testflight" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition-colors font-medium">Join Testflight</a>
         </div>
         <button class="md:hidden" aria-label="Open menu">
           <i data-feather="menu" class="text-gray-600"></i>
@@ -76,8 +76,8 @@
         Organisation, made magical.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-        <!-- ✅ Hero Waitlist Form -->
-        <form id="waitlist-form" class="flex flex-col sm:flex-row gap-2 w-full max-w-md" action="/thank-you.html" method="POST">
+        <!-- ✅ Hero Testlight Form -->
+        <form id="testflight-form" class="flex flex-col sm:flex-row gap-2 w-full max-w-md" action="/thank-you.html" method="POST">
           <input
             type="email"
             name="email"
@@ -226,13 +226,13 @@
   </section>
   <!-- Nav: add after Blog -->
 
-  <!-- Final Waitlist CTA -->
-  <section id="waitlist" class="py-20 bg-gradient-to-br from-primary to-secondary">
+  <!-- Final Testflight CTA -->
+  <section id="testflight" class="py-20 bg-gradient-to-br from-primary to-secondary">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
       <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Revolutionise Your Home?</h2>
-      <p class="text-xl text-white/90 mb-8 max-w-2xl mx-auto">Join the TIDEA waitlist today and be among the first to experience the future of home organisation.</p>
-      <!-- ✅ Footer Waitlist Form -->
-      <form id="waitlist-form-2" class="flex flex-col sm:flex-row gap-2 justify-center items-center max-w-md mx-auto" action="/thank-you.html" method="POST">
+      <p class="text-xl text-white/90 mb-8 max-w-2xl mx-auto">Join the TIDEA testflight today and be among the first to experience the future of home organisation.</p>
+      <!-- ✅ Footer Tesflight Form -->
+      <form id="testflight-form-2" class="flex flex-col sm:flex-row gap-2 justify-center items-center max-w-md mx-auto" action="/thank-you.html" method="POST">
         <input
           type="email"
           name="email"
@@ -241,7 +241,7 @@
           class="flex-grow px-4 py-3 rounded-lg border border-white/30 bg-white/20 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent"
         />
         <button type="submit" class="bg-white text-primary px-6 py-3 rounded-lg hover:bg-gray-100 transition-colors font-medium whitespace-nowrap font-semibold">
-          Join Waitlist Now
+          Join Testflight Now
         </button>
       </form>
       <p class="text-sm text-white/70 mt-4">We're building the MVP now. Your interest helps us prioritise features!</p>
@@ -254,7 +254,7 @@
     <h2 class="text-3xl md:text-4xl font-bold mb-4">App Privacy Summary</h2>
     <div class="bg-white border border-gray-200 rounded-2xl p-6">
       <ul class="space-y-3 text-gray-700">
-        <li><span class="font-semibold">Data collected:</span> Email (waitlist/newsletter only).</li>
+        <li><span class="font-semibold">Data collected:</span> Email (testflight/newsletter only).</li>
         <li><span class="font-semibold">Purpose:</span> Updates, early access, and announcements.</li>
         <li><span class="font-semibold">Sharing:</span> We do <em>not</em> sell your data. Limited processing by trusted providers (e.g., Netlify, Mailchimp).</li>
         <li><span class="font-semibold">Control:</span> You can unsubscribe any time via email footer or by contacting <a href="mailto:hello@tidea.app" class="underline text-primary">hello@tidea.app</a>.</li>
@@ -321,7 +321,7 @@
     </div>
   </div>
 
-  <!-- Supabase client (for waitlist storage) -->
+  <!-- Supabase client (for testflight storage) -->
   <script src="https://unpkg.com/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 
   <script>
@@ -373,7 +373,7 @@
       setTimeout(remove, 3500);
     }
 
-    // ✅ Supabase waitlist integration
+    // ✅ Supabase testflight integration
     const SUPABASE_URL = 'https://hciergtglghsfezgkkni.supabase.co';        // ← replace
     const SUPABASE_ANON_KEY = 'yJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhjaWVyZ3RnbGdoc2Zlemdra25pIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTY4NDMzOTQsImV4cCI6MjA3MjQxOTM5NH0.xyC-7gDbRh0OfZRxtTNOfVEHw0Kh0JBfDCqYcIC1POs'; // ← replace
     const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
@@ -399,8 +399,8 @@
         btn.textContent = 'Adding…';
 
         const source =
-          form.id === 'waitlist-form' ? 'hero' :
-          form.id === 'waitlist-form-2' ? 'footer' :
+          form.id === 'testflight-form' ? 'hero' :
+          form.id === 'testflight-form-2' ? 'footer' :
           'unknown';
 
         try {
