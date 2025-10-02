@@ -363,18 +363,38 @@
       .replace(/"/g, '&quot;');
   }
 
-  // ✅ Fetch latest 3 published posts from blog_posts and render cards
+  <script>
+  // small HTML-escape helper (keep yours if already defined)
+  function esc(s) {
+    return String(s || '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
   async function loadBlogCards() {
     try {
       const { data, error } = await _supabase
         .from('blog_posts')
         .select('slug,title,excerpt,cover_image_url,published,created_at')
-        .eq('published', [true,'true', 'TRUE', 't', 1)                 // adjust if you use a different flag
+        // ✅ if `published` is BOOLEAN use this:
+        .is('published', true)
+        // ✅ if (and only if) `published` is TEXT, swap the line above for:
+        // .in('published', [ 'true', 'TRUE', 't', '1', 'yes' ])
         .order('created_at', { ascending: false })
         .limit(3);
 
-      // if error or nothing, keep the section empty (fallback = none)
-      if (error || !Array.isArray(data) || data.length === 0) return;
+      if (error) {
+        showToast('Blog load error: ' + (error.message || 'unknown'), 'error');
+        return;
+      }
+      if (!Array.isArray(data) || data.length === 0) {
+        // Optional: show a gentle empty state
+        const grid = document.getElementById('blog-grid');
+        if (grid) grid.innerHTML = '';
+        return;
+      }
 
       const grid = document.getElementById('blog-grid');
       if (!grid) return;
@@ -398,11 +418,14 @@
       }).join('');
 
       grid.innerHTML = cards;
-    } catch {
-      // swallow & keep fallback (empty grid)
+    } catch (e) {
+      showToast('Blog load failed', 'error');
     }
   }
-    loadBlogCards();
+
+  // make sure it runs
+  document.addEventListener('DOMContentLoaded', loadBlogCards);
+</script>
 
     // Attach to all forms posting to /thank-you.html
     document.querySelectorAll('form[action="/thank-you.html"]').forEach((form) => {
