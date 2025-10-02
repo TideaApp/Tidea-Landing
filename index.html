@@ -385,7 +385,7 @@
       try {
         const { data, error } = await _supabase
           .from('blog_posts') // ← your table name
-          .select('slug,title,excerpt,cover_image,published,created_at')
+          .select('slug,title,excerpt,cover_image_url,published,created_at')
           .eq('published', true)
           .order('created_at', { ascending: false })
           .limit(3);
