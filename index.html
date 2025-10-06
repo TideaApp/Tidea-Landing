@@ -72,15 +72,27 @@
         <br /><br />
         Organisation, made magical.
       </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-        <form id="testflight-form" class="flex flex-col sm:flex-row gap-2 w-full max-w-md" action="/thank-you.html" method="POST">
-          <input type="email" name="email" placeholder="Enter your email address" required
-                 class="flex-grow px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" />
-          <button type="submit" class="bg-primary text-white px-6 py-3 rounded-lg hover:bg-[#9b4a2d] transition-colors font-medium whitespace-nowrap">
-            Join TestFlight
-          </button>
-        </form>
-      </div>
+     <div class="flex flex-col items-center gap-6">
+  <!-- App Store button -->
+      <a href="https://apps.apple.com/app/tidea/id6753593487" target="_blank" rel="noopener noreferrer">
+        <img
+          src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
+          alt="Download on the App Store"
+          class="h-12 hover:opacity-90 transition-opacity"
+        />
+      </a>
+    
+  <!-- Newsletter signup -->
+      <form id="newsletter-form" class="flex flex-col sm:flex-row gap-2 w-full max-w-md" action="/thank-you.html" method="POST">
+        <input type="email" name="email" placeholder="Your email address" required
+               class="flex-grow px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" />
+        <button type="submit" class="bg-primary text-white px-6 py-3 rounded-lg hover:bg-[#9b4a2d] transition-colors font-medium whitespace-nowrap">
+          Subscribe
+        </button>
+      </form>
+      <p class="text-sm text-gray-500">Get product news, releases, and tips. You can unsubscribe anytime.</p>
+    </div>
+
       <p class="text-sm text-gray-500 mt-4">Register your interest to be the first to experience TIDEA.</p>
     </div>
     <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce" aria-hidden="true">
