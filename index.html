@@ -204,21 +204,33 @@
     </div>
   </section>
 
-  <!-- TestFlight CTA -->
-  <section id="testflight" class="py-20 bg-gradient-to-br from-primary to-secondary">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
-      <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Revolutionise Your Home?</h2>
-      <p class="text-xl text-white/90 mb-8 max-w-2xl mx-auto">Join the TIDEA testflight and be among the first to experience the future of home organisation.</p>
-      <form id="testflight-form-2" class="flex flex-col sm:flex-row gap-2 justify-center items-center max-w-md mx-auto" action="/thank-you.html" method="POST">
-        <input type="email" name="email" placeholder="Your email address" required
-               class="flex-grow px-4 py-3 rounded-lg border border-white/30 bg-white/20 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent" />
-        <button type="submit" class="bg-white text-primary px-6 py-3 rounded-lg hover:bg-gray-100 transition-colors font-medium whitespace-nowrap font-semibold">
-          Join Testflight Now
-        </button>
-      </form>
-      <p class="text-sm text-white/70 mt-4">Be the first to test our MVP. Your interest helps us prioritise features!</p>
+<section id="newsletter" class="py-20 bg-gradient-to-br from-primary to-secondary">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+    <h2 class="text-3xl md:text-4xl font-bold mb-4">Stay in the Loop</h2>
+    <p class="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+      Subscribe for updates, feature drops, and organisation tips.
+    </p>
+    <form id="newsletter-form-2" class="flex flex-col sm:flex-row gap-2 justify-center items-center max-w-md mx-auto" action="/thank-you.html" method="POST">
+      <input type="email" name="email" placeholder="Your email address" required
+             class="flex-grow px-4 py-3 rounded-lg border border-white/30 bg-white/20 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent" />
+      <button type="submit" class="bg-white text-primary px-6 py-3 rounded-lg hover:bg-gray-100 transition-colors font-medium whitespace-nowrap font-semibold">
+        Subscribe
+      </button>
+    </form>
+    <p class="text-sm text-white/70 mt-4">We’ll only email you when it matters.</p>
+
+    <!-- App Store button (optional duplicate here) -->
+    <div class="mt-8">
+      <a href="https://apps.apple.com/app/tidea/id6753593487" target="_blank" rel="noopener noreferrer">
+        <img
+          src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
+          alt="Download on the App Store"
+          class="h-12 mx-auto hover:opacity-90 transition-opacity"
+        />
+      </a>
     </div>
-  </section>
+  </div>
+</section>
 
   <!-- App Privacy Summary -->
   <section id="privacy-summary" class="py-16 bg-gray-50">
